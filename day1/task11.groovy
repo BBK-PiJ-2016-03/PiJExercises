@@ -16,6 +16,24 @@ class Main{
 
 		List<Card> cards = new ArrayList<>()
 
+		//test
+		/*
+		cards.add(new Card("9", "Diamonds"))
+		cards.add(new Card("5", "Diamonds"))
+		cards.add(new Card("9", "Hearts"))
+		cards.add(new Card("5", "Clubs"))
+		cards.add(new Card("9", "Clubs"))
+
+		//		
+
+		cards.add(new Card("9", "Diamonds"))
+		cards.add(new Card("5", "Diamonds"))
+		cards.add(new Card("8", "Diamonds"))
+		cards.add(new Card("6", "Diamonds"))
+		cards.add(new Card("7", "Diamonds"))
+
+		*/
+		
 		while(cards.size() < cardsInFullHand){
 			String rank = null;
 			String suit = null;
@@ -37,8 +55,9 @@ class Main{
 			}
 			
 		}
+		
 
-		println "The best hand you have is a " + Hand.checkHand(cards)
+		println "The best hand you have is " + Hand.checkHand(cards)
 	}
 
 	private static String toTitleCase(String input){
@@ -134,9 +153,10 @@ public class Card{
 
 public class Hand{
 
-	private static HashMap<String, Integer> rankCount
+	private static HashMap<String, Integer> rankCount = null
 	private static boolean consecutive = false
 	private static boolean sameSuit = false
+	private static boolean poker = false
 	private static boolean threeOfAKind = false
 	private static boolean pair = false
 	private static int numPair = 0
@@ -183,6 +203,7 @@ public class Hand{
 	}
 
 	private static boolean isStraightFlush(List<Card> cards){
+
 		boolean sameSuit = true
 		boolean consecutive = true
 		String suit = cards[0].getSuit()
@@ -192,12 +213,10 @@ public class Hand{
 
 			if(card.getSuit() != suit){
 				sameSuit = false;
-				break
 			}
 
 			if(lastValue != -1 && getRankValue(card.getRank()) != lastValue + 1){
 				consecutive = false
-				break
 			}
 
 			lastValue = getRankValue(card.getRank())
@@ -206,41 +225,34 @@ public class Hand{
 		this.consecutive = consecutive
 		this.sameSuit = sameSuit
 
-		return consecutive && sameSuit
+		return this.consecutive && this.sameSuit
 	}
 
 	private static boolean isPoker(cards){
-		this.rankCount = countRanks(cards)
 
-		for(count in this.rankCount.values()) {
-			if(count == 4)
-				return true			
-		}
+		if(this.rankCount == null){
 
-		return false
-	}
+			this.rankCount = countRanks(cards)
 
-	private static boolean isFullHouse(cards){
-
-		boolean threeOfAKind = false
-		boolean pair = false
-		int numPair = 0
-
-		for(count in this.rankCount.values()) {
-			if(count == 3)
-				threeOfAKind = true	
-
-			if(count == 2){
-				pair = true		
-				numPair++	
+			for(count in this.rankCount.values()) {
+				if(count == 2){
+					this.pair = true		
+					this.numPair++	
+				}
+				else if(count == 4){
+					this.poker = true		
+				}
+				else if(count == 3){
+					this.threeOfAKind = true	
+				}					
 			}
 		}
 
-		this.threeOfAKind = threeOfAKind
-		this.pair = pair
-		this.numPair = numPair
+		return this.poker
+	}
 
-		return threeOfAKind && pair
+	private static boolean isFullHouse(cards){
+		return this.threeOfAKind && this.pair
 	}
 
 	private static boolean isFlush(cards){
@@ -267,9 +279,9 @@ public class Hand{
 	}
 
 	private static List<Card> sortCards(List<Card> cards){
-		HashMap<String, Card> sorted = new HashMap<>()
+		SortedMap<Integer, Card> sorted = new TreeMap<>()
 		for(card in cards) {
-			sorted[card.getRank()+card.getSuit()] = card
+			sorted[((getRankValue(card.getRank())*1000)+((int)card.getSuit()[0])).toString()] = card
 		}
 
 		cards = new ArrayList<>(sorted.values())
