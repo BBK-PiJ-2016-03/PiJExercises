@@ -21,7 +21,7 @@ for(number in map.keySet()){
 def sort(int[] numbers){
 	
 	//insertion sort O(N)
-	HashMap<Integer, Integer> sorted = new HashMap<>()
+	SortedMap<Integer, Integer> sorted = new TreeMap<>()
 	for(num in numbers){
 		sorted[num] = num
 	}
