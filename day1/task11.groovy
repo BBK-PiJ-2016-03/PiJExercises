@@ -72,7 +72,7 @@ class Main{
 
 
 	private static String getRank(int card, List<String> ranks){
-		print "Please enter the card rank (1,2,3,4,5,6,7,8,9,10,J,K,Q) for card #" + card + ": "
+		print "Please enter the card rank (1,2,3,4,5,6,7,8,9,10,J,Q,K) for card #" + card + ": "
 
 		String input = toTitleCase(System.console().readLine())
 
