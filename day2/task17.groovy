@@ -3,28 +3,28 @@ Write a program that reads an integer number from the user, and then outputs the
 are two prime numbers at the same distance, it should output both. For instance, if the user enters 5116, the output
 should be 5113 and 5119. */
 
-print "Please enter a number: "
+println "Please enter a number: "
 String userInput = System.console().readLine()
-int userNumber
 try{
-    userNumber = Integer.parseInt(userInput)
+    int userNumber = Integer.parseInt(userInput)
 
     if(isPrime(userNumber)){
-        return userNumber + "is a Prime number"
+        print userNumber + " is a Prime number"
     }
     else{
         boolean foundPrime = false
         int i = 1
         int numberOfClosestPrimes = 0
+
         while(!foundPrime){
 
-            if(isPrime(userNumber + i)){
+            if(isPrime(userNumber - i)){
                 foundPrime = true
                 numberOfClosestPrimes++
-                print (userNumber + i)
+                print (userNumber - i)
             }
 
-            if(isPrime(userNumber - i)){
+            if(isPrime(userNumber + i)){
                 foundPrime = true
                 numberOfClosestPrimes++
                 if(numberOfClosestPrimes == 2)
@@ -52,7 +52,7 @@ catch(NumberFormatException e){
     println "You did not enter a valid number"
 }
 
-def isPrime(number){
+def isPrime(int number){
     //a prime number can only be divided without remainder by itself and one
     boolean prime = true;
     for(int i = 2; i < number; i++){
