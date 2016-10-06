@@ -13,7 +13,7 @@ class Main{
         while(play == "Y"){
             Game game = new Game(p1, p2);
             println "Would you like to play again? (Y/N) "
-            play = System.console().readLine().toUppercase()
+            play = System.console().readLine().toUpperCase()
         }
     }
 }
@@ -23,7 +23,8 @@ class Game{
     int numPlayers = 2
     int currentPlayer = 1
     int turn = 1
-    int[] scores = new int[2]
+    int player1Score = 0
+    int player2Score = 0
     String[] currentTurns = new String[2]
     String[] validTurns
     boolean gameRunning = true
@@ -46,13 +47,13 @@ class Game{
     }
 
     private void init(){
-        clearScores()
         clearCurrentTurns()
         setValidTurn()
     }
 
     private void clearScores(){
-        this.scores = new int[2]
+        this.player1Score = 0
+        this.player2Score = 0
     }
 
     private void setValidTurn(){
@@ -168,16 +169,19 @@ class Game{
                 incrementPlayer1Score()
                 incrementPlayer2Score()
                 roundDrawMessage()
+                checkWinCondition()
                 break
         }
     }
 
     private void roundDrawMessage(){
         println "Draw " + getScoreText()
+        checkWinCondition()
     }
 
     private void roundWinMessage(String winner){
         println winner + " has won this round "  + getScoreText()
+        checkWinCondition()
     }
 
     private String getScoreText(){
@@ -185,27 +189,19 @@ class Game{
     }
 
     private void incrementPlayer1Score(){
-        if(this.scores[0] == null)
-            this.scores[0] = 0
-
-        this.scores[0]++
-        checkWinCondition()
+        this.player1Score++
     }
 
     private void incrementPlayer2Score(){
-        if(this.scores[1] == null)
-            this.scores[1] = 0
-
-        this.scores[1]++
-        checkWinCondition()
+        this.player2Score++
     }
 
     private int getPlayer1Score(){
-        return this.scores[0]
+        return this.player1Score
     }
 
     private int getPlayer2Score(){
-        return this.scores[1]
+        return this.player2Score
     }
 
     private void checkWinCondition(){
@@ -215,11 +211,11 @@ class Game{
 
         if (Math.abs(scoreDiff) > 3){
             this.gameRunning = false
-            println "Congratulations Player" + winner + ". You have won this game."
+            println "Congratulations " + winner + ". You have won this game."
         }
         else{
             this.currentPlayer = 1;
-            clearScores()
+            clearCurrentTurns()
         }
     }
 
