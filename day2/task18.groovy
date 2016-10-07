@@ -5,10 +5,9 @@ try{
     int digits = Integer.parseInt(input)
     int rounding = Math.pow(10, digits)
 
-    double pi = calulatePi(digits)
-    println pi
+    double pi = calulatePi(rounding)
 
-    //println Math.round(pi*rounding)/rounding
+    println Math.round(pi*rounding)/rounding
 
 }
 catch(NumberFormatException e){
@@ -20,7 +19,7 @@ def calulatePi(n){
     double four = 4.0
     double pi = 4
 
-    for(int i = 1; i < (n*4); i+=4){
+    for(int i = 3; i < (n*4); i+=4){
         pi = pi - (four/i)
         pi = pi + (four/(i+2))
     }
