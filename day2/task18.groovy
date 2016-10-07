@@ -5,7 +5,7 @@ try{
     int digits = Integer.parseInt(input)
     int rounding = Math.pow(10, digits)
 
-    double pi = calulatePi(rounding)
+    double pi = calulatePi(rounding*2/3)
 
     println Math.round(pi*rounding)/rounding
 
