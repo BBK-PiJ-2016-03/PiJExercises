@@ -8,13 +8,40 @@ class Main{
         print "Please enter Player 2's name: "
         String p2 = System.console().readLine()
 
+        Game.Mode mode = getGameMode()
+
         String play = "Y"
 
         while(play == "Y"){
-            Game game = new Game(p1, p2);
+            Game game = new Game(mode, p1, p2);
             println "Would you like to play again? (Y/N) "
             play = System.console().readLine().toUpperCase()
         }
+    }
+
+    private static Game.Mode getGameMode(){
+
+        Game.Mode gameMode = null
+
+        while(gameMode == null){
+            for(Game.Mode mode : Game.Mode){
+                println "[" + mode.ordinal() + "] " + mode.name()
+            }
+            print "Please select a game mode: "
+            String userSelectedMode = System.console().readLine()
+            try{
+                int modeOrdinal = Integer.parseInt(userSelectedMode)
+
+                gameMode = Game.Mode.values()[modeOrdinal]
+            }
+            catch(NumberFormatException e){
+                println "You must enter a numeric value presented e.g. 0"
+            }
+            catch(ArrayIndexOutOfBoundsException e){
+                println "You must enter a valid choice e.g. 0"
+            }
+        }
+        return gameMode
     }
 }
 
@@ -28,16 +55,19 @@ class Game{
     String[] currentTurns = new String[2]
     String[] validTurns
     boolean gameRunning = true
-    String player1 = "Player 1"
-    String player2 = "Player 2"
+    String player1Name = "Player 1"
+    String player2Name = "Player 2"
+    public static enum Mode{
+        Alternate, Pair, PairFromFile
+    }
 
-    public Game(String player1 = null, String player2 = null){
+    public Game(Mode mode, String player1Name = null, String player2Name = null){
 
-        if(player1 != null && player1 != "")
-            this.player1 = player1
+        if(player1Name != null && player1Name != "")
+            this.player1Name = player1Name
 
-        if(player2 != null && player2 != "")
-            this.player2 = player2
+        if(player2Name != null && player2Name != "")
+            this.player2Name = player2Name
 
         init()
 
@@ -69,7 +99,7 @@ class Game{
 
     private void takeTurn(){
         while(this.currentPlayer <= this.numPlayers){
-            String playerName = this.currentPlayer == 1 ? this.player1 : this.player2
+            String playerName = this.currentPlayer == 1 ? this.player1Name : this.player2Name
             println String.format("%1s, please enter your turn ([R]ock, [P]aper, [S]cissors):", playerName)
             this.currentTurns[currentPlayer-1] = System.console().readLine()
             if(checkTurn(this.currentPlayer)){
@@ -123,12 +153,12 @@ class Game{
 
             case "P":
                 incrementPlayer2Score()
-                roundWinMessage(this.player2)
+                roundWinMessage(this.player2Name)
                 break
 
             case "S":
                 incrementPlayer1Score()
-                roundWinMessage(this.player1)
+                roundWinMessage(this.player1Name)
                 break
         }
     }
@@ -137,7 +167,7 @@ class Game{
         switch(against){
             case "R":
                 incrementPlayer1Score()
-                roundWinMessage(this.player1)
+                roundWinMessage(this.player1Name)
                 break
 
             case "P":
@@ -148,7 +178,7 @@ class Game{
 
             case "S":
                 incrementPlayer2Score()
-                roundWinMessage(this.player2)
+                roundWinMessage(this.player2Name)
                 break
         }
     }
@@ -157,12 +187,12 @@ class Game{
         switch(against){
             case "R":
                 incrementPlayer2Score()
-                roundWinMessage(this.player2)
+                roundWinMessage(this.player2Name)
                 break
 
             case "P":
                 incrementPlayer1Score()
-                roundWinMessage(this.player1)
+                roundWinMessage(this.player1Name)
                 break
 
             case "S":
@@ -185,7 +215,7 @@ class Game{
     }
 
     private String getScoreText(){
-        return "| " + this.player1 + ": " + getPlayer1Score() + " | " + this.player2 + ": " + getPlayer2Score() + " |"
+        return "| " + this.player1Name + ": " + getPlayer1Score() + " | " + this.player2Name + ": " + getPlayer2Score() + " |"
     }
 
     private void incrementPlayer1Score(){
@@ -207,7 +237,7 @@ class Game{
     private void checkWinCondition(){
         int scoreDiff = getPlayer1Score() - getPlayer2Score()
 
-        String winner = scoreDiff > 0 ? this.player1 : this.player2
+        String winner = scoreDiff > 0 ? this.player1Name : this.player2Name
 
         if (Math.abs(scoreDiff) > 3){
             this.gameRunning = false
