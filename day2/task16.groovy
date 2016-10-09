@@ -8,11 +8,10 @@ class Main{
         print "Please enter Player 2's name: "
         String p2 = System.console().readLine()
 
-        Game.Mode mode = getGameMode()
-
         String play = "Y"
 
         while(play == "Y"){
+            Game.Mode mode = getGameMode()
             Game game = new Game(mode, p1, p2);
             println "Would you like to play again? (Y/N) "
             play = System.console().readLine().toUpperCase()
@@ -47,7 +46,10 @@ class Main{
 
 class Game{
 
-    int numPlayers = 2
+    public static enum Mode{
+        Alternate, Pair, PairFromFile
+    }
+
     int currentPlayer = 1
     int turn = 1
     int player1Score = 0
@@ -57,11 +59,13 @@ class Game{
     boolean gameRunning = true
     String player1Name = "Player 1"
     String player2Name = "Player 2"
-    public static enum Mode{
-        Alternate, Pair, PairFromFile
-    }
+    Mode currentMode = Mode.Alternate
 
-    public Game(Mode mode, String player1Name = null, String player2Name = null){
+
+    public Game(Mode mode = null, String player1Name = null, String player2Name = null){
+
+        if(mode != null)
+            this.currentMode = mode
 
         if(player1Name != null && player1Name != "")
             this.player1Name = player1Name
@@ -98,7 +102,42 @@ class Game{
     }
 
     private void takeTurn(){
-        while(this.currentPlayer <= this.numPlayers){
+        switch(this.currentMode){
+            case Mode.Alternate:
+                alternateTurn()
+                break
+
+            case Mode.Pair:
+                pairTurn()
+                break
+
+            default:
+                alternateTurn()
+                break
+        }
+    }
+
+    private void pairTurn(){
+        boolean validTurn = false
+        while(!validTurn){
+            println "Please enter the pair of turns in the format XX where X is in ([R]ock, [P]aper, [S]cissors):"
+            String turns = System.console().readLine()
+            if(turns.length() >= 2){
+                this.currentTurns[0] = turns[0]
+                this.currentTurns[1] = turns[1]
+                if(checkTurn(1) && checkTurn(2)){
+                    validTurn = true;
+                }
+                else{
+                    println "That was not a valid entry. Please try again."
+                }
+            }
+        }
+        scoreRound()
+    }
+
+    private void alternateTurn(){
+        while(this.currentPlayer <= 2){
             String playerName = this.currentPlayer == 1 ? this.player1Name : this.player2Name
             println String.format("%1s, please enter your turn ([R]ock, [P]aper, [S]cissors):", playerName)
             this.currentTurns[currentPlayer-1] = System.console().readLine()
