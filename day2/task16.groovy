@@ -76,7 +76,12 @@ class Game{
         init()
 
         while(gameRunning){
-            takeTurn()
+            if(this.currentMode != Mode.PairFromFile){
+                takeTurn()
+            }
+            else{
+                runFile()
+            }
         }
     }
 
@@ -101,6 +106,31 @@ class Game{
         this.currentTurns = new String[2]
     }
 
+    private void runFile(String path){
+        try(FileReader fileReader = new FileReader(path)){
+            try(BufferedReader bufferedReader = new BufferedReader(fileReader)){
+                String turn;
+                while((turn = bufferedReader.readLine()) != null){
+                    if(!checkAndRunPair(turn)){
+                        println "Invalid turn found. Please check the file contents before trying again."
+                        break
+                    }
+                    else{
+                        scoreRound()
+                    }
+                }
+            }
+            finally{
+                if(bufferedReader != null)
+                    bufferedReader.close()
+            }
+        }
+        finally{
+            if(fileReader != null)
+                fileReader.close()
+        }
+    }
+
     private void takeTurn(){
         switch(this.currentMode){
             case Mode.Alternate:
@@ -122,18 +152,23 @@ class Game{
         while(!validTurn){
             println "Please enter the pair of turns in the format XX where X is in ([R]ock, [P]aper, [S]cissors):"
             String turns = System.console().readLine()
-            if(turns.length() >= 2){
-                this.currentTurns[0] = turns[0]
-                this.currentTurns[1] = turns[1]
-                if(checkTurn(1) && checkTurn(2)){
-                    validTurn = true;
-                }
-                else{
-                    println "That was not a valid entry. Please try again."
-                }
+            if(!checkAndRunPair(turns)){
+                println "That was not a valid entry. Please try again."
             }
         }
-        scoreRound()
+
+    }
+
+    private boolean checkAndRunPair(String pair){
+        boolean validPair = false
+        if(turns.length() >= 2){
+            this.currentTurns[0] = turns[0]
+            this.currentTurns[1] = turns[1]
+            if(checkTurn(1) && checkTurn(2)){
+                validPair = true;
+            }
+        }
+        return validPair
     }
 
     private void alternateTurn(){
