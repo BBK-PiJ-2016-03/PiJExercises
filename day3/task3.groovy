@@ -14,9 +14,17 @@ double inputOperand2
 
 String userInput = args.join("")
 
-userInput = userInput.replace(" ", "")
+if(!(args.size() == 1 || args.size() == 3)){
+    println "The following arguments are not valid"
+    for(String arg : args){
+        println arg
+    }
+    validSum = true
+}
 
 while(!validSum){
+
+    //println "userInput: " + userInput
 
     if(userInput == null || userInput == ""){
         print "Please enter your two operand, single operator sum: "
