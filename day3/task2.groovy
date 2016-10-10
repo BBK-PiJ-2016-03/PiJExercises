@@ -9,7 +9,7 @@ thod to parse integers, there is a Dou-
 ble.parseDouble() method to parse real numbers.
 */
 
-List<String> Operators = Arrays.asList("+", "-", "*", "/")
+Iterable<String> Operators = Arrays.asList("+", "-", "*", "/")
 List<Double> numbers = new ArrayList<Double>()
 
 numbers = readNumbers()
