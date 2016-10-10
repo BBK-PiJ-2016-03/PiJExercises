@@ -20,7 +20,7 @@ for(int i = 1; i <= 3; i++){
 
 print "Out of the points "
 for(Point point : points){
-    printPoint(point)
+    print printPoint(point)
 }
 
 double distance0to1 = getDistance(points[0], points[1])
@@ -48,12 +48,12 @@ class Point {
 }
 
 def printPoint(Point point){
-    print "(" + point.x + ", " + point.y + ") "
+    return "(" + point.x + ", " + point.y + ") "
 }
 
 def getDistance(Point point1, Point point2){
     double xDiff = point1.x - point2.x
     double yDiff = point1.y - point2.y
 
-    return Math.sqrt(Math.Math.pow(xdiff, 2) + Math.pow(ydiff, 2))
+    return Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2))
 }
