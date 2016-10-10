@@ -14,7 +14,14 @@ List<Double> numbers = new ArrayList<Double>()
 
 numbers = readNumbers()
 String operator = readOperator()
-println calculate(numbers, operator)
+/*
+numbers.add(1.255)
+numbers.add(7)
+String operator = "+"
+*/
+
+Double result = calculate(numbers, operator)
+println result
 
 
 def readNumbers(){
@@ -59,6 +66,8 @@ def readOperator(){
 
 def calculate(numbers, operator){
 
+    Double precision = 1E14
+
     if(numbers.size() < 1)
         return null
 
@@ -84,5 +93,5 @@ def calculate(numbers, operator){
         }
     }
 
-    return result
+    return Math.round(result * precision) / precision
 }
