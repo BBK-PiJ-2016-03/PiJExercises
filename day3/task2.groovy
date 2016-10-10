@@ -9,12 +9,12 @@ thod to parse integers, there is a Dou-
 ble.parseDouble() method to parse real numbers.
 */
 
-Iterable<String> Operators = Arrays.asList("+", "-", "*", "/")
+
 List<Double> numbers = new ArrayList<Double>()
 
 numbers = readNumbers()
 String operator = readOperator()
-calculate(numbers, )
+println calculate(numbers, operator)
 
 
 def readNumbers(){
@@ -38,14 +38,19 @@ def readNumbers(){
 }
 
 def readOperator(){
-    println "Please choose an operator from the list"
-    for(String op : Operators){
-        println "\t"+op
-    }
+    Iterable<String> Operators = Arrays.asList("+", "-", "*", "/")
+
+
 
     String operator = null
 
     while(!Operators.contains(operator)){
+        println "Please choose an operator from the list"
+
+        for(String op : Operators){
+            println "\t" + op
+        }
+
         operator = System.console().readLine()
     }
 
@@ -59,7 +64,7 @@ def calculate(numbers, operator){
 
     double result = numbers[0]
 
-    for(int i = 1; i < numbers.size()-1; i++) {
+    for(int i = 1; i < numbers.size(); i++) {
         switch(operator){
             case "+":
                 result += numbers[i]
