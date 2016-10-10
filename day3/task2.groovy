@@ -9,24 +9,21 @@ thod to parse integers, there is a Dou-
 ble.parseDouble() method to parse real numbers.
 */
 
-enum Operators{
-    +,-,/,*
-}
-
-List<double> numbers = new ArrayList<double>()
+List<String> Operators = Arrays.asList("+", "-", "*", "/")
+List<Double> numbers = new ArrayList<Double>()
 
 numbers = readNumbers()
-operator = readOperator()
+String operator = readOperator()
 calculate(numbers, )
 
 
 def readNumbers(){
 
-    List<double> inputNumbers = new ArrayList<double>()
-    String[] output = new String[2]{"first","second"}
+    List<Double> inputNumbers = new ArrayList<Double>()
+    String[] output = ["first","second"] as String[]
 
-    for(int i = 0; i < output.size(); i++)
-        println String.format("Please enter your %s number", order)
+    for(int i = 0; i < output.size(); i++){
+        print String.format("Please enter your %s number: ", output[i])
         String input = System.console().readLine()
         try{
             double number = Double.parseDouble(input)
@@ -42,20 +39,14 @@ def readNumbers(){
 
 def readOperator(){
     println "Please choose an operator from the list"
-    for(Operators op : Operators.values()){
-        println "\t"+op.name()
+    for(String op : Operators){
+        println "\t"+op
     }
 
-    Operators operator = null
+    String operator = null
 
-    while(operator == null){
-        try{
-            String userInput = System.console().readLine()
-            operator = Operators.valueOf(userInput)
-        }
-        catch(ArrayIndexOutOfBoundsException e){
-            println "That was not a vlaid entry, please try again"
-        }
+    while(!Operators.contains(operator)){
+        operator = System.console().readLine()
     }
 
     return operator
@@ -70,19 +61,19 @@ def calculate(numbers, operator){
 
     for(int i = 1; i < numbers.size()-1; i++) {
         switch(operator){
-            case Operators.+:
+            case "+":
                 result += numbers[i]
                 break
 
-            case Operators.-:
+            case "-":
                 result -= numbers[i]
                 break
 
-            case Operators./:
+            case "/":
                 result /= numbers[i]
                 break
 
-            case Operators.*:
+            case "*":
                 result *= numbers[i]
                 break
         }
