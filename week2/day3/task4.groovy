@@ -20,9 +20,22 @@ for(int i = 1; i <= 3; i++){
 
 print "Out of the points "
 for(Point point : points){
-    print "(" + point.x + ", " + point.y + ") "
+    printPoint(point)
 }
 
+double distance0to1 = getDistance(points[0], points[1])
+double distance0to2 = getDistance(points[0], points[2])
+double distance1to2 = getDistance(points[1], points[2])
+
+if(distance0to1 < distance0to2 && distance0to1 < distance1to2){
+    println "The closest points are : " + printPoint(points[0]) + " and " + printPoint(points[1])
+}
+else if(distance0to1 < distance0to2 && distance0to1 > distance1to2){
+    println "The closest points are : " + printPoint(points[1]) + " and " + printPoint(points[2])
+}
+else{
+    println "The closest points are : " + printPoint(points[0]) + " and " + printPoint(points[2])
+}
 
 class Point {
     double x;
@@ -32,6 +45,10 @@ class Point {
         this.x = x
         this.y = y
     }
+}
+
+def printPoint(Point point){
+    print "(" + point.x + ", " + point.y + ") "
 }
 
 def getDistance(Point point1, Point point2){
