@@ -14,7 +14,30 @@ the value of the coordinates of the points
 through the rectangle, not directly through the point, i.e.
 myRectangle.upLeft.x , not point.x or x. */
 
+List<Point> points = readPoints(2)
 
+def readPoints(int numberofPoints){
+    List<Point> points = new ArrayList<>()
+
+    for(int i = 1; i <= numberofPoints; i++){
+        println "Entering Point " + i
+        print "Enter point x value: "
+        String xVal = System.console().readLine()
+        print "Enter point y value: "
+        String yVal = System.console().readLine()
+        try{
+            double xPos = Double.parseDouble(xVal)
+            double yPos = Double.parseDouble(yVal)
+            points.add(new Point(xPos, yPos))
+        }
+        catch(NumberFormatException e){
+            println "At least one value was not a valid number. Please enter this point again."
+            i--
+        }
+    }
+
+    return points
+}
 
 
 class Rectangle {
