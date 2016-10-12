@@ -11,7 +11,7 @@ String searchText = System.console().readLine()
 
 
 println "In [" + userText + "]"
-println "There are " + countTextOccurence(userText, target) + " instances of " + target
+println "There are " + countTextOccurence(userText, searchText) + " instances of " + searchText
 
 
 def countTextOccurence(String text, String target){
@@ -20,7 +20,7 @@ def countTextOccurence(String text, String target){
     int matchChar = 0
     int count = 0;
     for(char character : text){
-        if(targetCharacter == target[matchChar]){
+        if(character == target[matchChar]){
             if(matchChar == targetLength-1){
                 match = false
                 matchChar = 0
