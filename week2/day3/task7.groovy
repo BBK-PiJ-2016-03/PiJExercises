@@ -3,7 +3,7 @@ Write a program that reads the coordinates of four points, the former two defini
 defining another one. The program must read the coordinates of a fifth point and say whether the point is inside
 both rectangles, inside one of them only, or out of both. */
 
-List<String> messages = Arrays.asList("Enter top left point", "Enter top right point", "Enter location point");
+List<String> messages = Arrays.asList("Enter first rectangle top left point", "Enter first rectangle top right point", "Enter second rectangle top left point", "Enter second rectangle top right point","Enter location point");
 
 List<Point> points = readPoints(5, messages)
 
@@ -15,8 +15,8 @@ Rectangle rectangle2 = new Rectangle()
 rectangle.upLeft = points[2]
 rectangle.downRight = points[3]
 
-boolean insideRectangle1 = pointIsInsideRectangle(rectangle, points[4]
-boolean insideRectangle2 = pointIsInsideRectangle(rectangle, points[4]
+boolean insideRectangle1 = pointIsInsideRectangle(rectangle1, points[4])
+boolean insideRectangle2 = pointIsInsideRectangle(rectangle2, points[4])
 
 println ""
 
@@ -32,10 +32,6 @@ else if(insideRectangle2){
 else{
     println "The point is outside both rectangles"
 }
-
-
-println ""
-println "The point is " +  ? "inside" : "outside") + " the rectangle"
 
 
 def boolean pointIsInsideRectangle(Rectangle rectangle, Point point){
