@@ -2,11 +2,11 @@
 Write a program that reads a short string and then some longer text. The program must say how many times you
 can find the short string in the text. You cannot use any method of String apart from charAt() and length(). */
 
-print "Please enter some text: "
-String userText = System.console().readLine()
-
-print "Please enter the text you would like to count occurence of: "
+print "Please enter some short text: "
 String searchText = System.console().readLine()
+
+print "Please enter the text you would like to search in: "
+String userText = System.console().readLine()
 
 
 
