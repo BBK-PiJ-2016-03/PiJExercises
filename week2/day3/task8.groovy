@@ -4,10 +4,24 @@ different line. Now modify your program to write each word (as defined by spaces
 
 print "Please enter some text: "
 String userInput = System.console().readLine()
-outputEachCharacterOnNewLine(userInput)
+//outputEachCharacterOnNewLine(userInput)
+outputEachWordOnNewLine(userInput)
+
 
 def outputEachCharacterOnNewLine(String text){
     for(char character : text){
         println character
+    }
+}
+
+def outputEachWordOnNewLine(String text){
+    for(char character : text){
+        if(character == ' '){
+            print "\n"
+        }
+        else{
+            print character
+        }
+
     }
 }
