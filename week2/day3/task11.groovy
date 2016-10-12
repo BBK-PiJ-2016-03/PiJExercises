@@ -3,20 +3,28 @@ String userText = System.console().readLine()
 
 List<String> characters = new ArrayList<>()
 String userCharacter = ""
+boolean run = true
 
-while(!characters.contains(userCharacter)){
+while(run){
     print "Please enter the character you would like to count (e): "
     userCharacter = System.console().readLine()
-
-    characters.add(userCharacter)
 
     if(userCharacter == "" || userCharacter == null)
     userCharacter = "e"
 
     String target = userCharacter[0]
 
+    if(characters.contains(target)){
+        println "You have already searched for ["+target+"]"
+        run = false
+        break
+    }
+
     println "In [" + userText + "]"
     println "There are " + countCharacterOccurence(target, userText) + " instances of " + target
+
+    userCharacter = target
+    characters.add(userCharacter)
 }
 
 
