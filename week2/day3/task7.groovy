@@ -8,12 +8,12 @@ List<String> messages = Arrays.asList("Enter first rectangle top left point", "E
 List<Point> points = readPoints(5, messages)
 
 Rectangle rectangle1 = new Rectangle()
-rectangle.upLeft = points[0]
-rectangle.downRight = points[1]
+rectangle1.upLeft = points[0]
+rectangle1.downRight = points[1]
 
 Rectangle rectangle2 = new Rectangle()
-rectangle.upLeft = points[2]
-rectangle.downRight = points[3]
+rectangle2.upLeft = points[2]
+rectangle2.downRight = points[3]
 
 boolean insideRectangle1 = pointIsInsideRectangle(rectangle1, points[4])
 boolean insideRectangle2 = pointIsInsideRectangle(rectangle2, points[4])
