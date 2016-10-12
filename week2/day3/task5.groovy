@@ -17,35 +17,36 @@ myRectangle.upLeft.x , not point.x or x. */
 List<Point> points = readPoints(2)
 
 Rectangle rectangle = new Rectangle()
+
 rectangle.upLeft = points[0]
 rectangle.downRight = points[1]
 
 double[] widthNumbers = new double[2]
-numbers[0] = rectangle.downRight.x
-numbers[1] = rectangle.upLeft.x
+widthNumbers[0] = rectangle.downRight.x
+widthNumbers[1] = rectangle.upLeft.x
 
 double[] heightNumbers = new double[2]
-numbers[0] = rectangle.upLeft.y
-numbers[1] = rectangle.downRight.y
+heightNumbers[0] = rectangle.upLeft.y
+heightNumbers[1] = rectangle.downRight.y
 
 double width = calculate(widthNumbers, "-")
 double height = calculate(heightNumbers, "-")
 
 double[] areaNumbers = new double[2]
-numbers[0] = width
-numbers[1] = height
+areaNumbers[0] = width
+areaNumbers[1] = height
 
 double[] perimeterNumbers = new double[4]
-numbers[0] = width
-numbers[1] = width
-numbers[2] = height
-numbers[3] = height
+perimeterNumbers[0] = width
+perimeterNumbers[1] = width
+perimeterNumbers[2] = height
+perimeterNumbers[3] = height
 
 area = calculate(areaNumbers, "*")
 perimeter = calculate(perimeterNumbers, "+")
 
-prinln "The area of the rectangle is: " + area " units ^2"
-prinln "The perimeter of the rectangle is: " + area " units"
+println "The area of the rectangle is: " + area + " units ^2"
+println "The perimeter of the rectangle is: " + perimeter + " units"
 
 class Point {
     double x;
