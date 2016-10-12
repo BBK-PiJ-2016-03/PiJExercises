@@ -24,4 +24,6 @@ def countCharacterOccurence(char targetCharacter, String text){
         if(targetCharacter == character)
             count++
     }
+
+    return count
 }
