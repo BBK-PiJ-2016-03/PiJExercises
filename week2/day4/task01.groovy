@@ -6,8 +6,8 @@ i, j, newSize, size.
 01  class UnitMatrix {
 02    int size;
 03
-04    void setSize(int newSize) {
-05      this.size = newSize;
+04    void setSize(int size) {
+05      this.size = size;
 06    }
 07
 08    void print() {
