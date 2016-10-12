@@ -11,12 +11,22 @@ Rectangle rectangle = new Rectangle()
 rectangle.upLeft = points[0]
 rectangle.downRight = points[1]
 
+println ""
+println "The point is " + (pointIsInsideRectangle(rectangle, points[2]) ? "inside" : "outside") + " the rectangle"
 
 
+def boolean pointIsInsideRectangle(Rectangle rectangle, Point point){
 
+    if(     point.x >= rectangle.upLeft.x
+        &&  point.x <= rectangle.downRight.x
+        &&  point.y <= rectangle.upLeft.y
+        &&  point.y >= rectangle.downRight.y
+    ){
+        return true
+    }
 
-
-
+    return false
+}
 
 class Point {
     double x;
