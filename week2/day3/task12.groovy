@@ -27,27 +27,31 @@ while(!validInput){
     }
 }
 
-int changeValue = paymentTotal - totalCost;
+int changeValue = paymentTotalPennies - totalCostPennies;
 
-def calculateChange(BigDecimal changeTotal){
+calculateChange(changeValue)
+
+def calculateChange(int changeTotal){
 
     Map<Integer, String> denominations = new LinkedHashMap<>();
-    map.put(5000, "£50 notes: ");
-    map.put(2000, "£20 notes: ");
-    map.put(1000, "£10 notes: ");
-    map.put(500, "£5 notes: ");
-    map.put(100, "£1 coins: ");
-    map.put(50, "50p coins: ");
-    map.put(20, "20p coins: ");
-    map.put(10, "10p coins: ");
-    map.put(5, "5p coins: ");
-    map.put(2, "2p coins: ");
-    map.put(1, "1p coins: ");
+    denominations.put(5000, "£50 notes: ");
+    denominations.put(2000, "£20 notes: ");
+    denominations.put(1000, "£10 notes: ");
+    denominations.put(500, "£5 notes: ");
+    denominations.put(100, "£1 coins: ");
+    denominations.put(50, "50p coins: ");
+    denominations.put(20, "20p coins: ");
+    denominations.put(10, "10p coins: ");
+    denominations.put(5, "5p coins: ");
+    denominations.put(2, "2p coins: ");
+    denominations.put(1, "1p coins: ");
 
     for(Map.Entry<Integer, String> change : denominations.entrySet()){
-        int numberOfCoinsOrNotes = changetotal / change.getKey();
-        println change.getValue() + numberOfCoinsOrNotes;
-        changetotal -= (change.getKey()*numberOfCoinsOrNotes);
+        int numberOfCoinsOrNotes = changeTotal / change.getKey();
+        if(numberOfCoinsOrNotes > 0){
+            println change.getValue() + numberOfCoinsOrNotes;
+            changeTotal -= (change.getKey()*numberOfCoinsOrNotes);
+        }
     }
 
 }
