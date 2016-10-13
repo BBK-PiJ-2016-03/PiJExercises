@@ -2,14 +2,14 @@
 
 println("Palindrome checker");
 print("Please enter your text: ");
-String words = System.console().readLine();
-words = stripPunctuation(words);
+String rawWords = System.console().readLine();
+String words = stripPunctuation(rawWords);
 String wordsReversed = reverse(words);
 
 
 String response = (words == wordsReversed) ? "is" : "is not";
 
-println("[" + words + "] " + response + " a palindrome");
+println("[" + rawWords + "] " + response + " a palindrome");
 
 
 
