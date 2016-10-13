@@ -3,7 +3,8 @@ Write a program that reads the total cost of a purchase and an amount of money t
 of notes (50, 20, 10, 5) and coins (2, 1, 0.50, 0.20, 0.10, 0.05, 0.02, 0.01) needed. */
 
 boolean validInput = false;
-double totalCost = 0.0.0;
+double totalCost = 0.0;
+double paymentTotal = 0.0;
 int totalCostPennies = 0;
 int paymentTotalPennies = 0;
 
