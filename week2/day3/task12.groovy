@@ -45,20 +45,9 @@ def calculateChange(BigDecimal changeTotal){
     map.put(1, "1p coins: ");
 
     for(Map.Entry<Integer, String> change : denominations.entrySet()){
-        int value = changetotal / change.getKey();
-        println "£1 coins: " + pounds;
-        changetotal -= (100*pounds);
+        int numberOfCoinsOrNotes = changetotal / change.getKey();
+        println change.getValue() + numberOfCoinsOrNotes;
+        changetotal -= (change.getKey()*numberOfCoinsOrNotes);
     }
-
-    //notes
-
-    //coins
-    int pounds = changetotal / 100;
-    println "£1 coins: " + pounds;
-    changetotal -= (100*pounds);
-
-    int fiftyp = changetotal / 50;
-    println "50p coins: " + fiftyp;
-    changetotal -= (50*fiftyp);
 
 }
