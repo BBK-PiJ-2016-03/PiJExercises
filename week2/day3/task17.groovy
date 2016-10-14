@@ -11,16 +11,18 @@ class MailServer{
         DATA
     }
 
-    private State currentState = State.MAILFROM;
+    private State currentState = State.READY;
     private String fromAddress = "";
     private String toAddress = "";
     private String body = "";
+
+    private boolean running = true;
 
 
     public Start(){
         println("Welcome to My Mail Server!");
 
-        boolean running = true;
+
 
         while(running){
 
@@ -33,26 +35,34 @@ class MailServer{
 
         if(command.contains(check)){
             String email = command.replace(check, "");
-            return isValidEmail(email);
+            return true;
         }
-
+        println("Invalid command.");
         return false;
     }
 
     private boolean isValidEmail(String email){
         email = email.trim();
         int countAt = 0;
+        boolean valid = true;
 
         for(int i = 0; i < email.length(); i++){
             if(email[i] == '@'){
                 countAt++;
                 if(i == 0 || countAt > 1 || i == (email.length() - 1)){
-                    println("Invalid email");
-                    return false;
+                    valid = false;
                 }
             }
         }
-        return true;
+
+        if(countAt < 1){
+            valid = false;
+        }
+
+        if(!valid)
+            println("Invalid email");
+
+        return valid;
     }
 
     private void getCommand(){
@@ -62,8 +72,6 @@ class MailServer{
             print(">>> ");
             String command = System.console().readLine();
             validCommand = verifyCommand(command);
-            if(!validCommand)
-                println("Invalid command.");
         }
 
         println("OK");
@@ -72,37 +80,66 @@ class MailServer{
     private boolean verifyCommand(String command){
         switch(this.currentState){
             case State.READY:
-                boolean accepted = checkCommand("MAIL FROM: ", command);
-                if(accepted){
-                    this.fromAddress = command.replace("MAIL FROM: ", "").trim();
-                    this.currentState = State.MAILFROM;
-                }
-                return accepted;
+                return readyCheck(command);
             case State.MAILFROM:
-                boolean accepted = checkCommand("RCPT TO: ", command);
-                if(accepted){
-                    this.toAddress = command.replace("RCPT TO: ", "").trim();
-                    this.currentState = State.RCPTTO;
-                }
-                return accepted;
+                return mailFromCheck(command);
             case State.RCPTTO:
-                boolean accepted = checkCommand("DATA", command);
-                if(accepted){
-                    this.currentState = State.DATA;
-                }
-                return accepted;
+                return rcptToCheck(command);
             case State.DATA:
-                if(command == "."){
-                    sendEmail();
-                    this.currentState = State.READY;
-                }
-                else{
-                    this.body += command.trim();
-                }
-                return true;
+                return dataCheck(command);
             default:
                 return false;
         }
+    }
+
+    private boolean readyCheck(String command){
+        boolean accepted = checkCommand("MAIL FROM: ", command);
+        if(accepted){
+            String email = command.replace("MAIL FROM: ", "").trim();
+            if(isValidEmail(email)){
+                this.fromAddress = email;
+                this.currentState = State.MAILFROM;
+            }
+        }
+        return accepted;
+    }
+
+    private boolean mailFromCheck(String command){
+        boolean accepted = checkCommand("RCPT TO: ", command);
+        if(accepted){
+            String email = command.replace("RCPT TO: ", "").trim();
+            if(isValidEmail(email)){
+                this.toAddress = email;
+                this.currentState = State.RCPTTO;
+            }
+        }
+        return accepted;
+    }
+
+    private boolean rcptToCheck(String command){
+        boolean accepted = checkCommand("DATA", command);
+        if(accepted){
+            this.currentState = State.DATA;
+        }
+        return accepted;
+    }
+
+    private boolean dataCheck(String command){
+        if(command == "."){
+            sendEmail();
+            this.currentState = State.READY;
+        }
+        else{
+            this.body += command.trim();
+        }
+        return true;
+    }
+
+    private void checkQuit(command){
+        if(command == "QUIT"){
+            this.running = false;
+        }
+        return;
     }
 
     private void sendEmail(){
