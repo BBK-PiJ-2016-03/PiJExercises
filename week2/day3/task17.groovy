@@ -151,7 +151,7 @@ class MailServer{
             println("BYE!");
             this.running = false;
         }
-        return;
+        System.exit(0);
     }
 
     private void sendEmail(){
@@ -159,6 +159,7 @@ class MailServer{
         println("from: " + fromAddress);
         println("to: " + toAddress);
         println(body);
+        println("...done!");
     }
 
     /*
