@@ -5,7 +5,7 @@ print("Please enter your text: ");
 String words = System.console().readLine();
 String wordsReversed = reverse(words);
 
-println("Your palindrom is: " + words+wordsReversed)
+println("Your palindrome is: " + words+wordsReversed)
 
 def reverse(String words){
     String reversed = "";

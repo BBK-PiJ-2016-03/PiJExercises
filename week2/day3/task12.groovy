@@ -33,6 +33,8 @@ calculateChange(changeValue)
 
 def calculateChange(int changeTotal){
 
+    println("Your change is £" + (changeTotal/100) + "\n")
+
     Map<Integer, String> denominations = new LinkedHashMap<>();
     denominations.put(5000, "£50 notes: ");
     denominations.put(2000, "£20 notes: ");
