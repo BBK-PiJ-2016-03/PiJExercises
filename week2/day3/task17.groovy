@@ -67,14 +67,15 @@ class MailServer{
 
     private void getCommand(){
         boolean validCommand = false;
-
+        String command = "";
         while(!validCommand){
-            print(">>> ");
-            String command = System.console().readLine();
+            if(this.currentState != State.DATA)
+                print(">>> ");
+            command = System.console().readLine();
             validCommand = verifyCommand(command);
         }
-
-        println("OK");
+        if(this.currentState != State.DATA && !(this.currentState == State.RCPTTO && command == "DATA"))
+            println("OK");
     }
 
     private boolean verifyCommand(String command){
@@ -147,6 +148,7 @@ class MailServer{
 
     private void checkQuit(command){
         if(command == "QUIT"){
+            println("BYE!");
             this.running = false;
         }
         return;
