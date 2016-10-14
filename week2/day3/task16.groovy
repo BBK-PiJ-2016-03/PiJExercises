@@ -6,7 +6,8 @@ println("Please enter a number with commas and decimal point: ");
 String input = System.console().readLine();
 
 double number = parseNumber(stripCommas(input));
-println number / 2;
+println("your number: " + number);
+println("Your number / 2: " + (number / 2));
 
 def parseNumber(String input){
     int decimalPointPosition = input.indexOf(".");
@@ -14,15 +15,15 @@ def parseNumber(String input){
     double output = 0;
 
     if(decimalPointPosition > 0){
-        int reduction = input.length - decimalPointPosition;
+        int reduction = (input.length() - decimalPointPosition -1);
         for(int i = reduction; i>0; i--){
             columnValue /= 10;
         }
     }
 
-    for(char character : input){
-        if(character != '.'){
-            output += Integer.parseInt(character.toString()) * columnValue;
+    for(int i = input.length()-1; i >= 0; i--){
+        if(input[i] != '.'){
+            output += Integer.parseInt(input[i]) * columnValue;
             columnValue *= 10;
         }
     }
