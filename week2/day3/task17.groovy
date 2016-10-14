@@ -80,12 +80,16 @@ class MailServer{
     private boolean verifyCommand(String command){
         switch(this.currentState){
             case State.READY:
+                checkQuit(command);
                 return readyCheck(command);
             case State.MAILFROM:
+                checkQuit(command);
                 return mailFromCheck(command);
             case State.RCPTTO:
+                checkQuit(command);
                 return rcptToCheck(command);
             case State.DATA:
+                checkQuit(command);
                 return dataCheck(command);
             default:
                 return false;
@@ -100,6 +104,9 @@ class MailServer{
                 this.fromAddress = email;
                 this.currentState = State.MAILFROM;
             }
+            else{
+                accepted = false;
+            }
         }
         return accepted;
     }
@@ -111,6 +118,9 @@ class MailServer{
             if(isValidEmail(email)){
                 this.toAddress = email;
                 this.currentState = State.RCPTTO;
+            }
+            else{
+                accepted = false;
             }
         }
         return accepted;
