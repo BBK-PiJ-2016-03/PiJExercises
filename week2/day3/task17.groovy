@@ -74,7 +74,7 @@ class MailServer{
             command = System.console().readLine();
             validCommand = verifyCommand(command);
         }
-        if(this.currentState != State.DATA && !(this.currentState == State.RCPTTO && command == "DATA"))
+        if(this.currentState != State.DATA && !(this.currentState == State.RCPTTO && command == "DATA") && command != ".")
             println("OK");
     }
 
