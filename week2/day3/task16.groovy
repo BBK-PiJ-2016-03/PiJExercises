@@ -28,7 +28,7 @@ def parseNumber(String input){
         }
     }
 
-    return output;
+    return Math.round(output * 1E14) / 1E14;
 }
 
 def stripCommas(String input){
