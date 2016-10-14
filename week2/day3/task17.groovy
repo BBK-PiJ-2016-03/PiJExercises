@@ -81,12 +81,12 @@ class MailServer{
             case State.MAILFROM:
                 boolean accepted = checkCommand("RCPT TO: ", command);
                 if(accepted){
-                    this.toAddress = command.replace("MAIL FROM: ", "").trim();
+                    this.toAddress = command.replace("RCPT TO: ", "").trim();
                     this.currentState = State.RCPTTO;
                 }
                 return accepted;
             case State.RCPTTO:
-                boolean accepted = checkCommand("DATA: ", command);
+                boolean accepted = checkCommand("DATA", command);
                 if(accepted){
                     this.currentState = State.DATA;
                 }
