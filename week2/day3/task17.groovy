@@ -150,8 +150,9 @@ class MailServer{
         if(command == "QUIT"){
             println("BYE!");
             this.running = false;
+            System.exit(0);
         }
-        System.exit(0);
+        return;
     }
 
     private void sendEmail(){
