@@ -97,7 +97,7 @@ class MailServer{
                     this.currentState = State.READY;
                 }
                 else{
-                    this.data += command.trim();
+                    this.body += command.trim();
                 }
                 return true;
             default:
