@@ -5,7 +5,7 @@ server.Start();
 
 class MailServer{
     enum State{
-        READY
+        READY,
         MAILFROM,
         RCPTTO,
         DATA
