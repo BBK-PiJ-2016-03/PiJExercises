@@ -22,12 +22,8 @@ class MailServer{
     public Start(){
         println("Welcome to My Mail Server!");
 
-
-
-        while(running){
-
+        while(this.running){
             getCommand();
-
         }
     }
 
