@@ -141,7 +141,7 @@ class MailServer{
             this.currentState = State.READY;
         }
         else{
-            this.body += command.trim();
+            this.body += command.trim()+"\n";
         }
         return true;
     }
