@@ -33,8 +33,17 @@ class MailServer{
 
     private boolean checkCommand(String check, String command){
 
-        if(command.contains(check)){
+        if(command.contains(check) && command.substring(0, check.length()) == check){
             String email = command.replace(check, "");
+            return true;
+        }
+        println("Invalid command.");
+        return false;
+    }
+
+    private boolean matchCommand(String check, String command){
+
+        if(command == check){
             return true;
         }
         println("Invalid command.");
@@ -128,9 +137,12 @@ class MailServer{
     }
 
     private boolean rcptToCheck(String command){
-        boolean accepted = checkCommand("DATA", command);
+        boolean accepted = matchCommand("DATA", command);
         if(accepted){
             this.currentState = State.DATA;
+        }
+        else{
+            println("");
         }
         return accepted;
     }
