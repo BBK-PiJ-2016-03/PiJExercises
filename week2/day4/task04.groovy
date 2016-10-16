@@ -120,3 +120,5 @@ println("Convert 9");
 println(hex2decimal("9"));
 println("Convert 20");
 println(hex2decimal("20"));
+println("Convert g");
+println(hex2decimal("g"));
