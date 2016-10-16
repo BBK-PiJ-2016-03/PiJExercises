@@ -58,7 +58,7 @@ def getHexValue(String hex){
 }
 
 def getHexValue(int dec){
-    switch(hex.toLowerCase()){
+    switch(dec){
         case 0:
             return "0";
         case 1:
