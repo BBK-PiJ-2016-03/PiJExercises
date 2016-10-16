@@ -40,8 +40,17 @@ def boolean isValidBase2Char(char character){
     return false;
 }
 
-def decimal2binary(int decimal){
 
+def decimal2binary(int decimal){
+    String binary = "";
+
+    while(decimal >= 0){
+        int remainder = decimal % 2;
+        binary = remainder + binary;
+        decimal = Math.floor(decimal/2);
+    }
+
+    return binary;
 }
 
 def getExponentFromUser(){
@@ -68,4 +77,10 @@ def getExponentFromUser(){
 //int exponent = getExponentFromUser()
 //println power2(exponent)
 
-println binary2decimal("100001")
+//println binary2decimal("100001")
+print("converting 8 : ");
+println(decimal2binary(8));
+print("converting 4 : ");
+println(decimal2binary(4));
+print("converting 3 : ");
+println(decimal2binary(3));
