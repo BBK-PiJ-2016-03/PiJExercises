@@ -9,7 +9,8 @@ String input = System.console().readLine();
 println("Length: "+input.length());
 
 if(input.length() >= 2 && input[0] == "0" && input[1].toLowerCase() == "x"){
-    println("Hex: "+input.substring(2));
+    String hexValue = input.substring(2);
+    println("You entered the number \'" + hexValue + "\' in Hexadecimal. This is \'" + hexValue + "\' in decimal.");
 }
 else{
     println("Decimal: "+input)
@@ -56,6 +57,46 @@ def getHexValue(String hex){
     }
 }
 
+def getHexValue(int dec){
+    switch(hex.toLowerCase()){
+        case 0:
+            return "0";
+        case 1:
+            return "1";
+        case 2:
+            return "2";
+        case 3:
+            return "3";
+        case 4:
+            return "4";
+        case 5:
+            return "5";
+        case 6:
+            return "6";
+        case 7:
+            return "7";
+        case 8:
+            return "8";
+        case 9:
+            return "9";
+        case 10:
+            return "a";
+        case 11:
+            return "b";
+        case 12:
+            return "c";
+        case 13:
+            return "d";
+        case 14:
+            return "e";
+        case 15:
+            return "f";
+        default:
+            throw new NumberFormatException();
+
+    }
+}
+
 def hex2decimal(String hex){
 
     int powerVal = hex.length() - 1;
@@ -68,6 +109,21 @@ def hex2decimal(String hex){
     }
 
     return decimal;
+
+}
+
+def decimal2hex(String decimal){
+    int dec = Integer.parseInt(decimal);
+
+    String hex = "";
+
+    while(dec > 0){
+        int remainder = dec % 16;
+        hex = getHexValue(remainder) + hex;
+        dec = dec/16;
+    }
+
+    return hex;
 
 }
 
@@ -112,13 +168,11 @@ def power(int base, int exponent){
     return result;
 }
 
-println("Convert a");
-println(hex2decimal("a"));
-println("Convert 1a");
-println(hex2decimal("1a"));
+println("Convert 10");
+println(decimal2hex("10"));
+println("Convert 26");
+println(decimal2hex("26"));
 println("Convert 9");
-println(hex2decimal("9"));
-println("Convert 20");
-println(hex2decimal("20"));
-println("Convert g");
-println(hex2decimal("g"));
+println(decimal2hex("9"));
+println("Convert 32");
+println(decimal2hex("32"));
