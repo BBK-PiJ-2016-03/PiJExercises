@@ -6,16 +6,15 @@
 println("Please enter a decimal or hexadecimal number (prefixed with 0x)");
 String input = System.console().readLine();
 
-println("Length: "+input.length());
+//println("Length: "+input.length());
 
 if(input.length() >= 2 && input[0] == "0" && input[1].toLowerCase() == "x"){
     String hexValue = input.substring(2);
-    println("You entered the number \'" + hexValue + "\' in Hexadecimal. This is \'" + hexValue + "\' in decimal.");
+    println("You entered the number \'" + hexValue + "\' in hexadecimal. This is \'" + hex2decimal(hexValue) + "\' in decimal.");
 }
 else{
-    println("Decimal: "+input)
+    println("You entered the number \'" + input + "\' in decimal. This is \'" + decimal2hex(input) + "\' in hexadecimal.");
 }
-println()
 
 def getHexValue(String hex){
     switch(hex.toLowerCase()){
@@ -168,6 +167,7 @@ def power(int base, int exponent){
     return result;
 }
 
+/*
 println("Convert 10");
 println(decimal2hex("10"));
 println("Convert 26");
@@ -176,3 +176,4 @@ println("Convert 9");
 println(decimal2hex("9"));
 println("Convert 32");
 println(decimal2hex("32"));
+*/
