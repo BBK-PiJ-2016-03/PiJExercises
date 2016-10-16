@@ -44,10 +44,10 @@ def boolean isValidBase2Char(char character){
 def decimal2binary(int decimal){
     String binary = "";
 
-    while(decimal >= 0){
+    while(decimal > 0){
         int remainder = decimal % 2;
         binary = remainder + binary;
-        decimal = Math.floor(decimal/2);
+        decimal = decimal/2;
     }
 
     return binary;
