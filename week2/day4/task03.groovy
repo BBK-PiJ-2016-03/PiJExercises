@@ -1,9 +1,9 @@
 /* 3  Binary and decimal */
 
 def power(int base, int exponent){
-    int result = base;
+    int result = 1;
 
-    for(int i = 1; i < exponent; i++){
+    for(int i = 0; i < exponent; i++){
         result *= base;
     }
 
@@ -68,4 +68,4 @@ def getExponentFromUser(){
 //int exponent = getExponentFromUser()
 //println power2(exponent)
 
-println binary2decimal("100000")
+println binary2decimal("100001")
