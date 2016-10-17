@@ -3,8 +3,8 @@ public class App{
 
         Matrix matrix = new Matrix(3,5);
 
-        for(int[] arr : matrix){
-            printArray(arr);
+        for(int i = 0; i < matrix.matrix.length; i++){
+            printArray(matrix.matrix[i], "Array "+i);
         }
     }
 
