@@ -9,5 +9,7 @@ public class App{
 
         System.out.println(matrix.toString());
 
+        System.out.println(matrix.prettyPrint());
+
     }
 }

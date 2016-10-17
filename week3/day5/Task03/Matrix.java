@@ -82,4 +82,17 @@ public class Matrix{
         output += "]";
         return output;
     }
+
+    public String prettyPrint(){
+        String output = "";
+        for(int[] row : this.matrix){
+            for(int i = 0; i < row.length; i++){
+                if(i > 0)
+                    output += ", ";
+                output += row[i];
+            }
+            output += "\n";
+        }
+        return output;
+    }
 }
