@@ -3,9 +3,12 @@ public class App{
 
         Matrix matrix = new Matrix(3,5);
 
-        matrix.setRow(1, "1,2,3,4,5");
+        matrix.setColumn(1, "1,2,3,4,5");
 
-        printArray(matrix.getRow(1));
+        for(int[] row : matrix.matrix){
+            printArray(row, "");
+        }
+
 
     }
 

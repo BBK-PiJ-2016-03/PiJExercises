@@ -10,15 +10,15 @@ public class Matrix{
         }
     }
 
-    public void setElement(int rows,int bcolumns,int value){
-        matrix[a][b] = value;
+    public void setElement(int row,int column,int value){
+        matrix[row][column] = value;
     }
 
     public void setRow(int row, String values){
-        int[] values = getValuesFromString(values);
+        int[] valuesArray = getValuesFromString(values);
 
         int i = 0;
-        for(int val : values){
+        for(int val : valuesArray){
             if(matrix[row].length > i){
                 matrix[row][i] = val;
             }
@@ -26,8 +26,30 @@ public class Matrix{
         }
     }
 
+    public void setColumn(int column, String values){
+        int[] valuesArray = getValuesFromString(values);
+
+        int i = 0;
+        for(int val : valuesArray){
+            if(matrix.length > i){
+                matrix[i][column] = val;
+            }
+            i++;
+        }
+    }
+
     public int[] getRow(int row){
         return matrix[row];
+    }
+
+    public int[] getColumn(int column){
+        int[] columnValues = new int[matrix.length];
+        int i = 0;
+        for(int[] row : matrix){
+            columnValues[i] = row[i];
+            i++;
+        }
+        return columnValues;
     }
 
     private int[] getValuesFromString(String vals){
