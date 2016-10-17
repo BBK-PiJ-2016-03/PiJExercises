@@ -65,4 +65,18 @@ public class Matrix{
 
         return integerValues;
     }
+
+    @Override
+    public String toString(){
+        String output = "";
+        for(int[] row : this.matrix){
+            for(int i = 0; i < row.length; i++){
+                if(i > 0)
+                    output += ", ";
+                output += row[i];
+            }
+            output += "\n";
+        }
+        return output;
+    }
 }

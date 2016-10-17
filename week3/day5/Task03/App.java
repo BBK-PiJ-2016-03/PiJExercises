@@ -5,9 +5,14 @@ public class App{
 
         matrix.setColumn(1, "1,2,3,4,5");
 
+        matrix.setRow(1, "1,2,3,4,5");
+
+        System.out.println(matrix.toString());
+        /*
         for(int[] row : matrix.matrix){
             printArray(row, "");
         }
+        */
 
 
     }
