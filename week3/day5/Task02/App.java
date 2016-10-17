@@ -5,26 +5,26 @@ public class App{
         int[] arr12 = new int[12];
         int[] arr5 = new int[5];
 
-        printArray(arr = source, label = "Source: ");
+        printArray(source, "Source: ");
 
         ArrayCopier copier = new ArrayCopier();
 
         //Both arrays are of the same size.
         int[] copied1 = copier.copy(source, arr8);
-        printArray(arr = copied1, label = "Copied, same size: ");
+        printArray(copied1, "Copied, same size: ");
 
         // The source array is longer.
-        int[] copied1 = copier.copy(source, arr5);
-        printArray(arr = copied1, label = "Copied, source longer: ");
+        int[] copied2 = copier.copy(source, arr5);
+        printArray(copied2, "Copied, source longer: ");
 
         //The source array is shorter.
-        int[] copied1 = copier.copy(source, arr12);
-        printArray(arr = copied1, label = "Copied, source shorter: ");
+        int[] copied3 = copier.copy(source, arr12);
+        printArray(copied3, "Copied, source shorter: ");
 
 
     }
 
-    private void printArray(int[] arr, String label){
+    private static void printArray(int[] arr, String label){
         for(int value : arr){
             System.out.print(label + value + ", ");
         }
