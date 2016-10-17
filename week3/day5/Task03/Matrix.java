@@ -68,15 +68,18 @@ public class Matrix{
 
     @Override
     public String toString(){
-        String output = "";
-        for(int[] row : this.matrix){
-            for(int i = 0; i < row.length; i++){
-                if(i > 0)
-                    output += ", ";
-                output += row[i];
+        String output = "[";
+
+        for(int i = 0; i < this.matrix.length; i++){
+            for(int j = 0; j < this.matrix[i].length; j++){
+                if(j > 0)
+                    output += ",";
+                output += this.matrix[i][j];
             }
-            output += "\n";
+            if(i < this.matrix.length - 1)
+                output += ";";
         }
+        output += "]";
         return output;
     }
 }
