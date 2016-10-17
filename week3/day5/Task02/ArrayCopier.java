@@ -10,5 +10,7 @@ public class ArrayCopier{
                 destination[i] = 0;
             }
         }
+
+        return destination;
     }
 }
