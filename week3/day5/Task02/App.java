@@ -28,5 +28,6 @@ public class App{
         for(int value : arr){
             System.out.print(label + value + ", ");
         }
+        System.out.println();
     }
 }
