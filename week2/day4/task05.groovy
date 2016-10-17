@@ -63,16 +63,16 @@ Point point2 = new Point(5,10);
 println("Distance: " + point1.distanceTo(point2));
 println("distanceToOrigin: " + point1.distanceToOrigin());
 Point point3 = point1.clone()
-println("Clone: (" + point3.getX + ", " + point3.getY + ")");
+println("Clone: (" + point3.getX() + ", " + point3.getY() + ")");
 
 Point point4 = point1.opposite()
-println("Opposite Clone: (" + point4.getX + ", " + point4.getY + ")");
+println("Opposite Clone: (" + point4.getX() + ", " + point4.getY() + ")");
 
 point1.moveTo(point2)
-println("Move to point2: (" + point1.getX + ", " + point1.getY + ")");
+println("Move to point2: (" + point1.getX() + ", " + point1.getY() + ")");
 
 point1.moveTo(20,20)
-println("Move to 20,20: (" + point1.getX + ", " + point1.getY + ")");
+println("Move to 20,20: (" + point1.getX() + ", " + point1.getY() + ")");
 
 println("Distance: " + point1.distanceTo(point2));
 
