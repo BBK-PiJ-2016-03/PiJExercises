@@ -4,7 +4,7 @@ public class App{
         Matrix matrix = new Matrix(3,5);
 
         for(int i = 0; i < matrix.matrix.length; i++){
-            printArray(matrix.matrix[i], "Array "+i);
+            printArray(matrix.matrix[i], "Array "+i+ ": ");
         }
     }
 
