@@ -72,14 +72,14 @@ public class Matrix{
         values = values.replace("]", "");
         String[] rowsData = getRowData(values);
 
-        for(String rowData in rowsData){
-            setRow(rowData);
+        for(int i = 0; i < rowsData.length; i++){
+            setRow(i, rowsData[i]);
         }
     }
 
     private String[] getRowData(String values){
-        vals = vals.replace(" ", "");
-        return vals.split(";");
+        values = values.replace(" ", "");
+        return values.split(";");
     }
 
     @Override
