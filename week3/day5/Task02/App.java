@@ -10,16 +10,16 @@ public class App{
         ArrayCopier copier = new ArrayCopier();
 
         //Both arrays are of the same size.
-        int[] copied1 = copier.copy(source, arr8);
-        printArray(copied1, "Copied, same size: ");
+        copier.copy(source, arr8);
+        printArray(arr8, "Copied, same size: ");
 
         // The source array is longer.
-        int[] copied2 = copier.copy(source, arr5);
-        printArray(copied2, "Copied, source longer: ");
+        copier.copy(source, arr5);
+        printArray(arr5, "Copied, source longer: ");
 
         //The source array is shorter.
-        int[] copied3 = copier.copy(source, arr12);
-        printArray(copied3, "Copied, source shorter: ");
+        copier.copy(source, arr12);
+        printArray(arr12, "Copied, source shorter: ");
 
 
     }
