@@ -19,6 +19,11 @@ double interestRate = Double.parseDouble(inputInterestRate);
 
 Mortgage mortgage = new Mortgage(borrowing, yearsToRepay, interestRate);
 
+println("Total Repayment: " + mortgage.getTotalRepayment());
+println("Annual Repayment: " + mortgage.getAnnualRepayment());
+println("Total interest: " + mortgage.getInterest());
+println("Years to pay off interest: " + mortgage.getYearsUntilInterestPaid());
+
 class Mortgage{
 
     private double initialCapital = 0.0;
@@ -32,15 +37,21 @@ class Mortgage{
     }
 
     public double getTotalRepayment(){
-
+        return (initialCapital * (1 + (interestRate/100)));
     }
 
     public double getAnnualRepayment(){
-
+        if(durationOfLoan > 0)
+            return getTotalRepayment() / durationOfLoan;
+        return -1
     }
 
-    public double getYearsUntilInterestPaid(){
+    public int getYearsUntilInterestPaid(){
+        return (int)Math.ceil(getInterest() / getAnnualRepayment());
+    }
 
+    public double getInterest(){
+        return initialCapital * (interestRate/100);
     }
 
 }
