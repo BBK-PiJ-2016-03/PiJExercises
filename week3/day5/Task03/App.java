@@ -3,9 +3,10 @@ public class App{
 
         Matrix matrix = new Matrix(3,5);
 
-        for(int i = 0; i < matrix.matrix.length; i++){
-            printArray(matrix.matrix[i], "Array "+i+ ": ");
-        }
+        matrix.setRow(1, "1,2,3,4,5");
+
+        printArray(matrix.getRow(1));
+
     }
 
     private static void printArray(int[] arr, String label){
