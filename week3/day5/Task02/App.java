@@ -25,8 +25,9 @@ public class App{
     }
 
     private static void printArray(int[] arr, String label){
+        System.out.print(label);
         for(int value : arr){
-            System.out.print(label + value + ", ");
+            System.out.print(value + ", ");
         }
         System.out.println();
     }
