@@ -27,7 +27,9 @@ public class MatrixChecker{
     private boolean check2dSymmetryOnRow(int[][] arr, int row){
         boolean symmetric = true;
         for(int col = 0; col < arr[row].length; col++){
+
             symmetric = check2dSymmetry(arr, col, row);
+
             if(symmetric == false)
                 break;
         }
@@ -41,31 +43,34 @@ public class MatrixChecker{
         return false;
     }
 
-    //continue from HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public boolean isSymmetrical(int[][] arr){
         //m[i][j] == m[j][i]
-        boolean symmetrical = true;
+        boolean symmetric = true;
 
         for(int row = 0; row < arr.length; row++){
-            symmetrical = check2dSymmetryOnRow(arr, row);
+
+            symmetric = check2dSymmetryOnRow(arr, row);
+
+            if(symmetric == false)
+                break;
         }
 
-        return symmetrical;
+        return symmetric;
     }
 
     public boolean isTriangular(int[][] arr){
         //m[i][j] == 0 for any value of i that is greater than j.
-        boolean symmetrical = true;
+        boolean symmetric = true;
 
         for(int row = 0; row < arr.length; row++){
             for(int col = 0; col < arr[row].length; col++){
                 if(arr[row][col] != arr[col][row]){
-                    symmetrical = false;
+                    symmetric = false;
                     break;
                 }
             }
         }
 
-        return false;
+        return symmetric;
     }
 }

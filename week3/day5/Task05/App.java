@@ -12,10 +12,10 @@ public class App{
         sym2d[1][1] = 1;
 
         int[][] notSym2d = new int[2][2];
-        sym2d[0][0] = 1;
-        sym2d[0][1] = 2;
-        sym2d[1][0] = 3;
-        sym2d[1][1] = 4;
+        notSym2d[0][0] = 1;
+        notSym2d[0][1] = 2;
+        notSym2d[1][0] = 3;
+        notSym2d[1][1] = 4;
 
         System.out.println(checker.isSymmetrical(sym));
         System.out.println(checker.isSymmetrical(notSym));
