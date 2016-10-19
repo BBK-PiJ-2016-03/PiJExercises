@@ -23,13 +23,22 @@ public class MatrixChecker{
         return false;
     }
 
-    private boolean check2dSymmetry(int[][] arr, int rowPosition){
-        for(int column = 0; column < arr[row]; i++){
-                if(arr[row][column] != arr[column][row]){
-                    symmetrical = false;
-                    break;
-                }
-            }
+    //this is not optimised, you don't have to examine all the positions, only half of them.
+    private boolean check2dSymmetryOnRow(int[][] arr, int row){
+        boolean symmetric = true;
+        for(int col = 0; col < arr[row].length; col++){
+            symmetric = check2dSymmetry(arr, col, row);
+            if(symmetric == false)
+                break;
+        }
+        return symmetric;
+    }
+
+    private boolean check2dSymmetry(int[][] arr, int col, int row){
+        if(arr[row][col] == arr[col][row]){
+            return true;
+        }
+        return false;
     }
 
     //continue from HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -37,8 +46,8 @@ public class MatrixChecker{
         //m[i][j] == m[j][i]
         boolean symmetrical = true;
 
-        for(int row = 0; row < arr.length; i++){
-            symmetrical = check2dSymmetry(arr, row);
+        for(int row = 0; row < arr.length; row++){
+            symmetrical = check2dSymmetryOnRow(arr, row);
         }
 
         return symmetrical;
@@ -48,9 +57,9 @@ public class MatrixChecker{
         //m[i][j] == 0 for any value of i that is greater than j.
         boolean symmetrical = true;
 
-        for(int row = 0; row < arr.length; i++){
-            for(int column = 0; column < arr[row]; i++){
-                if(arr[row][column] != arr[column][row]){
+        for(int row = 0; row < arr.length; row++){
+            for(int col = 0; col < arr[row].length; col++){
+                if(arr[row][col] != arr[col][row]){
                     symmetrical = false;
                     break;
                 }
