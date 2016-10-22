@@ -1,28 +1,35 @@
 public class HospitalManager{
     private Patient firstPatient;
+    private Patient lastPatient;
     private int totalPatients;
 
     //O(1)
     public HospitalManager(){
         this.firstPatient = null;
+        this.lastPatient = null;
         this.totalPatients = 0;
     }
 
-    //O(N)
+    //O(1)
     public void addPatient(Patient newPatient){
-        Patient currentPatient = this.firstPatient;
 
-        if(currentPatient == null){
-            this.firstPatient = newPatient;
-            this.totalPatients++;
+        if(this.lastPatient == null){
+            addFirstPatient(newPatient);
             return;
         }
 
-        while(currentPatient.getNextPatient() != null){
-            currentPatient = currentPatient.getNextPatient();
-        }
+        addNewPatient(newPatient);
+    }
 
-        currentPatient.setNextPatient(newPatient);
+    private void addNewPatient(Patient newPatient){
+        this.lastPatient.setNextPatient(newPatient);
+        this.lastPatient = newPatient;
+        this.totalPatients++;
+    }
+
+    private void addFirstPatient(Patient newPatient){
+        this.firstPatient = newPatient;
+        this.lastPatient = newPatient;
         this.totalPatients++;
     }
 
