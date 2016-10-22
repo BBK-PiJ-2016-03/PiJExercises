@@ -4,6 +4,9 @@ public class App{
         HospitalManager hospital = new HospitalManager();
 
         hospital.addPatient(new Patient("Barry Eples", 28, "Plague"));
+
+        hospital.printPatients();
+
         hospital.addPatient(new Patient("Susan Salami", 87, "Toxic Shock"));
         hospital.addPatient(new Patient("Martin Delares", 74, "Arthritis"));
         hospital.addPatient(new Patient("Sarah Alician", 6, "Mumps"));
@@ -19,6 +22,19 @@ public class App{
         hospital.removePatient("Barry Eples");
         hospital.removePatient("Jen Germaine");
         hospital.removePatient("Terence Degario");
+
+        hospital.printPatients();
+
+        hospital.removePatient("Susan Salami");
+        hospital.removePatient("Martin Delares");
+        hospital.removePatient("Sarah Alician");
+
+        hospital.printPatients();
+
+        hospital.removePatient("Mohammed Al Elahi");
+        hospital.removePatient("Nigel Hamasby");
+        hospital.removePatient("Umair Rumain");
+        hospital.removePatient("Uma Theremin");
 
         hospital.printPatients();
     }

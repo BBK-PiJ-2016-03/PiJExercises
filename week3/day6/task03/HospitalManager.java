@@ -37,28 +37,51 @@ public class HospitalManager{
     public void removePatient(String name){
         Patient currentPatient = this.firstPatient;
 
-        if(currentPatient.getName().equals(name)){
-            this.firstPatient = currentPatient.getNextPatient();
-            this.totalPatients--;
+        if(currentPatient.getName().equals(name) && this.totalPatients <= 1){
+            removeLastPatient();
+            return;
+        }
+        else if(currentPatient.getName().equals(name)){
+            removeFirstPatient(currentPatient);
+            return;
         }
 
-        while(currentPatient.getNextPatient() != null){
-            if(tryToRemoveNextPatient(name, currentPatient))
+        while(currentPatient != null){
+            if(tryToRemovePatient(name, currentPatient))
                 break;
             currentPatient = currentPatient.getNextPatient();
         }
     }
 
-    private boolean tryToRemoveNextPatient(String name, Patient previous){
-        Patient candidateToRemove = previous.getNextPatient();
+    private void removeFirstPatient(Patient patient){
+        this.firstPatient = this.firstPatient.getNextPatient();
+        this.firstPatient.setPrevPatient = null;
+        this.totalPatients--;
+    }
 
-        if(candidateToRemove == null)
+    private void removeLastPatient(Patient patient){
+        this.firstPatient = null;
+        this.lastPatient = null;
+        this.totalPatients--;
+    }
+
+    private boolean tryToRemovePatient(String name, Patient patient){
+
+        if(patient == null)
             return false;
 
-        if(candidateToRemove.getName().equals(name)){
-                previous.setNextPatient(candidateToRemove.getNextPatient());
-                this.totalPatients--;
-                return true;
+        if(patient.getName().equals(name)){
+            Patient prev = patient.getPrevPatient();
+            Patient next = patient.getNextPatient();
+
+            if(prev != null)
+                prev.setNextPatient(next);
+
+            if(next != null)
+                next.setPrevPatient(prev);
+
+            this.totalPatients--;
+            return true;
         }
         return false;
     }
