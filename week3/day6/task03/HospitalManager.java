@@ -104,13 +104,23 @@ public class HospitalManager{
         Patient currentPatient = this.firstPatient;
         String patientDisplay = this.totalPatients == 1 ? "Patient" : "Patients";
         System.out.println(this.totalPatients + " " + patientDisplay);
-        System.out.println("---------------------------------------------------");
+        if(this.totalPatients > 0){
+            printPatientsData(currentPatient);
+        }
+    }
+
+    private void printPatientsData(Patient currentPatient){
+        printSpacer();
         while(currentPatient != null){
             System.out.println(currentPatient);
             currentPatient = currentPatient.getNextPatient();
         }
-        System.out.println("---------------------------------------------------");
+        printSpacer();
         System.out.println();
+    }
+
+    private void printSpacer(){
+        System.out.println("---------------------------------------------------");
     }
 
     public int getNumberOfPatients(){
