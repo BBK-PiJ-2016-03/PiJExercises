@@ -13,7 +13,7 @@ public class HospitalManager{
     //O(1)
     public void addPatient(Patient newPatient){
 
-        if(this.lastPatient.equals(null)){
+        if(this.lastPatient == null){
             addFirstPatient(newPatient);
             return;
         }
@@ -46,7 +46,7 @@ public class HospitalManager{
             return;
         }
 
-        while(!currentPatient.equals(null)){
+        while(currentPatient != null){
             if(tryToRemovePatient(name, currentPatient))
                 break;
             currentPatient = currentPatient.getNextPatient();
@@ -67,17 +67,17 @@ public class HospitalManager{
 
     private boolean tryToRemovePatient(String name, Patient patient){
 
-        if(patient.equals(null))
+        if(patient == null)
             return false;
 
         if(patient.getName().equals(name)){
             Patient prev = patient.getPrevPatient();
             Patient next = patient.getNextPatient();
 
-            if(!prev.equals(null))
+            if(prev != null)
                 prev.setNextPatient(next);
 
-            if(!next.equals(null))
+            if(next != null)
                 next.setPrevPatient(prev);
 
             if(patient.equals(this.firstPatient))
@@ -98,7 +98,7 @@ public class HospitalManager{
         String patientDisplay = this.totalPatients == 1 ? "Patient" : "Patients";
         System.out.println(this.totalPatients + " " + patientDisplay);
         System.out.println("---------------------------------------------------");
-        while(!currentPatient.equals(null)){
+        while(currentPatient != null){
             System.out.println(currentPatient);
             currentPatient = currentPatient.getNextPatient();
         }
