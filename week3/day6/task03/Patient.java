@@ -32,11 +32,11 @@ public class Patient{
     }
 
     public Patient getPrevPatient(){
-        return this.nextPatient;
+        return this.prevPatient;
     }
 
     public void setPrevPatient(Patient nextPatient){
-        this.nextPatient = nextPatient;
+        this.prevPatient = nextPatient;
     }
 
     @Override

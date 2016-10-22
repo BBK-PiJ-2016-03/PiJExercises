@@ -13,7 +13,7 @@ public class HospitalManager{
     //O(1)
     public void addPatient(Patient newPatient){
 
-        if(this.lastPatient == null){
+        if(this.totalPatients == 0){
             addFirstPatient(newPatient);
             return;
         }
@@ -22,14 +22,23 @@ public class HospitalManager{
     }
 
     private void addNewPatient(Patient newPatient){
-        this.lastPatient.setNextPatient(newPatient);
+
+        if(this.lastPatient == null){
+            this.lastPatient = newPatient;
+            this.firstPatient.setNextPatient(this.lastPatient);
+            this.lastPatient.setPrevPatient(this.firstPatient);
+            return;
+        }
+
+        Patient previous = this.lastPatient;
+        previous.setNextPatient(newPatient);
         this.lastPatient = newPatient;
+        this.lastPatient.setPrevPatient(previous);
         this.totalPatients++;
     }
 
     private void addFirstPatient(Patient newPatient){
         this.firstPatient = newPatient;
-        this.lastPatient = newPatient;
         this.totalPatients++;
     }
 
@@ -55,7 +64,8 @@ public class HospitalManager{
 
     private void removeFirstPatient(Patient patient){
         this.firstPatient = this.firstPatient.getNextPatient();
-        this.firstPatient.setPrevPatient(null);
+        if(this.firstPatient != null)
+            this.firstPatient.setPrevPatient(null);
         this.totalPatients--;
     }
 
