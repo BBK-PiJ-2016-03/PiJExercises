@@ -21,7 +21,7 @@ public class App{
         hospital.addPatient(new Patient("Jen Germaine", 72, "Headache"));
 
         //hospital.printPatients();
-/*
+
         hospital.removePatient("Barry Eples");
         hospital.removePatient("Jen Germaine");
         hospital.removePatient("Terence Degario");
@@ -40,6 +40,6 @@ public class App{
         hospital.removePatient("Uma Theremin");
 
         hospital.printPatients();
-*/
+
     }
 }

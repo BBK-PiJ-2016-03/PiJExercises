@@ -23,14 +23,11 @@ public class HospitalManager{
 
     private void addNewPatient(Patient newPatient){
 
-        if(this.lastPatient == null){
-            this.lastPatient = newPatient;
-            this.firstPatient.setNextPatient(this.lastPatient);
-            this.lastPatient.setPrevPatient(this.firstPatient);
-            return;
-        }
-
         Patient previous = this.lastPatient;
+
+        if(previous == null)
+            previous = this.firstPatient;
+
         previous.setNextPatient(newPatient);
         this.lastPatient = newPatient;
         this.lastPatient.setPrevPatient(previous);
