@@ -53,10 +53,12 @@ public class HospitalManager{
     //O(N)
     public void printPatients(){
         Patient currentPatient = this.firstPatient;
-
+        System.out.println("---------------------------------------------------");
         while(currentPatient != null){
             System.out.println(currentPatient);
             currentPatient = currentPatient.getNextPatient();
         }
+        System.out.println("---------------------------------------------------");
+        System.out.println();
     }
 }
