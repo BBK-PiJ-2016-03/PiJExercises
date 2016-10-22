@@ -13,5 +13,13 @@ public class App{
         hospital.addPatient(new Patient("Umair Rumain", 30, "Stubbed Toe"));
         hospital.addPatient(new Patient("Uma Theremin", 48, "Broken Nail"));
         hospital.addPatient(new Patient("Jen Germaine", 72, "Headache"));
+
+        hospital.printPatients();
+
+        hospital.removePatient("Barry Eples");
+        hospital.removePatient("Jen Germaine");
+        hospital.removePatient("Terence Degario");
+
+        hospital.printPatients();
     }
 }
