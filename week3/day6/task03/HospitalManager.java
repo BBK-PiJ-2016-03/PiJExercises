@@ -55,11 +55,11 @@ public class HospitalManager{
 
     private void removeFirstPatient(Patient patient){
         this.firstPatient = this.firstPatient.getNextPatient();
-        this.firstPatient.setPrevPatient = null;
+        this.firstPatient.setPrevPatient(null);
         this.totalPatients--;
     }
 
-    private void removeLastPatient(Patient patient){
+    private void removeLastPatient(){
         this.firstPatient = null;
         this.lastPatient = null;
         this.totalPatients--;
