@@ -2,6 +2,7 @@ public class Patient{
     private String name = "";
     private int age = 0;
     private String condition = "";
+    private Patient prevPatient = null;
     private Patient nextPatient = null;
 
     public Patient(String name, int age, String condition){
@@ -27,6 +28,14 @@ public class Patient{
     }
 
     public void setNextPatient(Patient nextPatient){
+        this.nextPatient = nextPatient;
+    }
+
+    public Patient getPrevPatient(){
+        return this.nextPatient;
+    }
+
+    public void setPrevPatient(Patient nextPatient){
         this.nextPatient = nextPatient;
     }
 
