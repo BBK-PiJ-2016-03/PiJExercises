@@ -24,13 +24,15 @@ public class SupermarketQueue implements PersonQueue {
     }
 
     public Person retrieve() {
-        if (firstPerson == null)
+        if (firstPerson == null){
             return null;
+        }
 
         if (firstPerson.getNextPerson() == null) {
             Person lastPerson = firstPerson;
             firstPerson = null;
             lastPerson.setNextPerson(null);
+            this.length--;
             return lastPerson;
         }
 
@@ -43,6 +45,7 @@ public class SupermarketQueue implements PersonQueue {
 
         Person lastPerson = currentPerson.getNextPerson();
         currentPerson.setNextPerson(null);
+        this.length--;
         return lastPerson;
 
     }
