@@ -1,8 +1,14 @@
 public class App{
     public static void main(String[] args){
-        System.out.println(HashUtilities.shortHash(1000));
-        System.out.println(HashUtilities.shortHash(99));
-        System.out.println(HashUtilities.shortHash(-2500));
-        System.out.println(HashUtilities.shortHash(1001));
+
+        String input = "";
+        while(input != "q" && input != "quit"){
+            println "Give me a string and I will calculate its hash code (q to quit)";
+            String str = System.console().readLine();
+            int hash = str.hashCode();
+            int smallHash = HashUtilities.shortHash(hash);
+            System.out.println("0 < " + smallHash + " < 1000");
+        }
+
     }
 }
