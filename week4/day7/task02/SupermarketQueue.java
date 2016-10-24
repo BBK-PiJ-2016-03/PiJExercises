@@ -24,7 +24,7 @@ public class SupermarketQueue implements PersonQueue {
     }
 
     public Person retrieve() {
-        if (firstPerson == null);
+        if (firstPerson == null)
             return null;
 
         if (firstPerson.getNextPerson() == null) {
