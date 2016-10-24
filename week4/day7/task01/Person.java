@@ -1,14 +1,10 @@
 public class Person {
-    private int id;
     private String name;
-    private int age;
     private Person prevPerson;
     private Person nextPerson;
 
-    public Person(int id, String name, int age) {
-        this.id = id;
+    public Person(String name) {
         this.name = name;
-        this.age = age;
         this.prevPerson = null;
         this.nextPerson = null;
     }
@@ -39,6 +35,11 @@ public class Person {
 
     public void setNextPerson(Person person) {
         this.nextPerson = person;
+    }
+
+    @Override
+    public String toString(){
+        return this.name;
     }
 
 }

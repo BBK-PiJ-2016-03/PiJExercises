@@ -2,6 +2,7 @@ public class SupermarketQueue implements PersonQueue {
 
     private Person firstPerson = null;
     private Person lastPerson = null;
+    private int length = 0;
 
     public SupermarketQueue(){
 
@@ -15,12 +16,14 @@ public class SupermarketQueue implements PersonQueue {
         if(firstPerson == null){
             firstPerson = person;
             lastPerson = person;
+            this.length++;
             return;
         }
 
         person.setNextPerson(firstPerson);
         firstPerson.setPrevPerson(person);
         firstPerson = person;
+         this.length++;
     }
 
     public Person retrieve() {
@@ -35,6 +38,7 @@ public class SupermarketQueue implements PersonQueue {
             lastPerson.setPrevPerson = null;
             firstPerson = null;
             lastPerson = null;
+            this.length--;
             return removedPerson;
         }
 
@@ -44,11 +48,16 @@ public class SupermarketQueue implements PersonQueue {
         removedPerson.setPrevPerson(null);
         removedPerson.setNextPerson(null);
 
+        this.length--;
         return removedPerson;
     }
 
     public Person peek(){
         return lastPerson;
+    }
+
+    public int length(){
+        return this.length;
     }
 
 }
