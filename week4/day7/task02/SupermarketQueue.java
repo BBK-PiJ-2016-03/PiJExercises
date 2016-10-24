@@ -36,7 +36,7 @@ public class SupermarketQueue implements PersonQueue {
 
         Person currentPerson = firstPerson;
         while (currentPerson.getNextPerson() != null) {
-            if (currentPerson.getNextPerson().getNextPerson() == null);
+            if (currentPerson.getNextPerson().getNextPerson() == null)
                 break;
             currentPerson = currentPerson.getNextPerson();
         }
