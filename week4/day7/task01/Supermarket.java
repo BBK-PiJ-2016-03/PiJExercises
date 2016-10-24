@@ -2,6 +2,10 @@ public class Supermarket{
 
     private SupermarketQueue queue;
 
+    public static void main(String[] args){
+        Supermarket sm = new Supermarket();
+    }
+
     public Supermarket(){
         this.queue = new SupermarketQueue();
 
@@ -18,7 +22,7 @@ public class Supermarket{
         addPerson(new Person("Bertha"));
         addPerson(new Person("Bilbo"));
 
-        while(this.queue.length > 0){
+        while(this.queue.length() > 0){
             servePerson();
         }
 

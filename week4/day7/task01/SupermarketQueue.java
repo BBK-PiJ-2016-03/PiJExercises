@@ -34,8 +34,8 @@ public class SupermarketQueue implements PersonQueue {
             return null;
 
         if(lastPerson == firstPerson){
-            lastPerson.setNextPerson = null;
-            lastPerson.setPrevPerson = null;
+            lastPerson.setNextPerson(null);
+            lastPerson.setPrevPerson(null);
             firstPerson = null;
             lastPerson = null;
             this.length--;
@@ -59,5 +59,6 @@ public class SupermarketQueue implements PersonQueue {
     public int length(){
         return this.length;
     }
+
 
 }
