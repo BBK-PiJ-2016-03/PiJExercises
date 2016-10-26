@@ -16,7 +16,7 @@ public interface RecentNumbers{
     int maxLength();
 
     /**
-    * @return the element at the index
+    * @return the number at the index
     */
-    String getElementAtIndex(int index);
+    String getNumber(int index);
 }

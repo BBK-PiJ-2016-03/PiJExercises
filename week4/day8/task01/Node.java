@@ -1,8 +1,8 @@
 public class Node<T>{
 
-    private T value;
-    private Node nextNode;
-    private Node prevNode;
+    private T value = null;
+    private Node<T> nextNode;
+    private Node<T> prevNode;
 
     /**
     * constructor fornode
@@ -14,7 +14,7 @@ public class Node<T>{
 
     /**
     * getter for value
-    * @return T value stored in the node
+    * @return value stored in the node
     */
     public T getValue(){
         return this.value;
@@ -24,7 +24,7 @@ public class Node<T>{
     * getter for the next linked node
     * @return Node reference for the next node in the sequence
     */
-    public Node getNextNode(){
+    public Node<T> getNextNode(){
         return this.nextNode;
     }
 
@@ -32,7 +32,7 @@ public class Node<T>{
     * getter for the previous linked node
     * @return Node reference for the previous node in the sequence
     */
-    public Node getPrevNode(){
+    public Node<T> getPrevNode(){
         return this.prevNode;
     }
 
@@ -40,7 +40,7 @@ public class Node<T>{
     * setter for the next linked node
     * @param nextNode reference for the next node to be connected to the sequence
     */
-    public setNextNode(Node nextNode){
+    public void setNextNode(Node<T> nextNode){
         this.nextNode = nextNode;
     }
 
@@ -48,7 +48,7 @@ public class Node<T>{
     * setter for the previous linked node
     * @param prevNode reference for the next node to be connected to the sequence
     */
-    public setPrevNode(Node prevNode){
+    public void setPrevNode(Node<T> prevNode){
         this.prevNode = prevNode;
     }
 }

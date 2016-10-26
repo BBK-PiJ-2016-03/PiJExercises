@@ -3,22 +3,30 @@ public class MobilePhone extends OldPhone{
     private RecentNumbers lastNumbers;
 
     public MobilePhone(){
-        lastNumbers = new RecentNumbers(10);
+        lastNumbers = new RecentNumbersList(10);
     }
 
-    public void ringAlarm(String){
-        System.out.println("Ring, Ring...");
+    @Override
+    public void call(String number){
+        super.call(number);
+        lastNumbers.add(number);
     }
 
-    public void playGame(String){
-        System.out.println("Playing Game...");
+    public void ringAlarm(String alarm){
+        System.out.println("Ring, Ring... "+alarm);
+    }
+
+    public void playGame(String game){
+        System.out.println("Playing Game... " + game);
     }
 
     public void printLastNumbers(){
-        System.out.println("Recent Numbers:");
-        for (number : lastNumbers){
-            System.out.println("\t"+number);
+        System.out.println("");
+        System.out.println("Recent Numbers: " + lastNumbers.length());
+        for(int i = 0; i < lastNumbers.length(); i++){
+            System.out.println("\t"+lastNumbers.getNumber(i));
         }
+        System.out.println("");
     }
 
 }
