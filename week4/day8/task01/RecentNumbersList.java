@@ -74,4 +74,16 @@ public class RecentNumbersList implements RecentNumbers{
         return currentNode;
     }
 
+    /**
+    * return a string of an iteration of all numbers held in the collection
+    */
+    @Override
+    public String toString(){
+        String numbers = "";
+        for(int i = 0; i < this.count; i++){
+            numbers += "\n\t"+getNumber(i);
+        }
+        return numbers;
+    }
+
 }
