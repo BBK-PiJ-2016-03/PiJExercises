@@ -1,4 +1,4 @@
-public interface Stack<T>{
+public interface GenericStack<T>{
     /**
     * @return and remove the most recent value from the stack
     */
