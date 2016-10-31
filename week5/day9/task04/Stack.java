@@ -10,7 +10,7 @@ public interface Stack<T>{
     T peek();
 
     /**
-    * @return the preview of the most recent value on the stack
+    * @return a boolean to indicate if the stack is empty
     */
     boolean isEmpty();
 
