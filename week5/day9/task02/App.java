@@ -2,7 +2,9 @@ import java.lang.reflect.*;
 
 public class App{
     public static void main(String[] args){
-        SmartPhone myPhone = new SmartPhone();
+        //SmartPhone myPhone = new SmartPhone();
+        
+        Mobilephone myPhone = new Smartphone();
 
         myPhone.browseWeb("www.google.com");
         System.out.println(myPhone.findPosition());
