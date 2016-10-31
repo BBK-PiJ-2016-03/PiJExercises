@@ -1,15 +1,20 @@
-import java.lang.reflect.*;
+//import java.lang.reflect.*;
 
 public class App{
     public static void main(String[] args){
-        //SmartPhone myPhone = new SmartPhone();
+
+        App app = new App();
+
+        SmartPhone myPhone = new SmartPhone();
         
-        Mobilephone myPhone = new Smartphone();
+        //Mobilephone myPhone = new Smartphone();
 
         myPhone.browseWeb("www.google.com");
         System.out.println(myPhone.findPosition());
         myPhone.playGame("Snake");
         myPhone.call("01708731555");
+
+        app.testPhone(myPhone);
 
 
         /*
@@ -38,6 +43,11 @@ public class App{
         }
 
         */
+    }
+
+    private void testPhone(Phone phone){
+        // phone.browseWeb("www.disney.com"); // cant use, is not a method of Phone.
+        phone.call("555-123-555");
     }
 
 }
