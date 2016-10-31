@@ -9,11 +9,6 @@ public class App{
         
         //Mobilephone myPhone = new Smartphone();
 
-        myPhone.browseWeb("www.google.com");
-        System.out.println(myPhone.findPosition());
-        myPhone.playGame("Snake");
-        myPhone.call("01708731555");
-
         app.testPhone(myPhone);
 
 
@@ -46,8 +41,11 @@ public class App{
     }
 
     private void testPhone(Phone phone){
-        // phone.browseWeb("www.disney.com"); // cant use, is not a method of Phone.
-        phone.call("555-123-555");
+        SmartPhone smartPhone = (SmartPhone)phone;
+        smartPhone.browseWeb("www.google.com");
+        System.out.println(smartPhone.findPosition());
+        smartPhone.playGame("Snake");
+        smartPhone.call("01708731555");
     }
 
 }
