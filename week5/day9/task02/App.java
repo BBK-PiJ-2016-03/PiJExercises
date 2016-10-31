@@ -5,12 +5,11 @@ public class App{
 
         App app = new App();
 
-        SmartPhone myPhone = new SmartPhone();
+        SmartPhone myPhone = new MobilePhone();
         
         //Mobilephone myPhone = new Smartphone();
 
         app.testPhone(myPhone);
-
 
         /*
         
