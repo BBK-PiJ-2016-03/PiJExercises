@@ -26,12 +26,12 @@ public class DoubleLinkedList<T> implements MyLinkedList<T>{
         previous.setNextNode(newNode);
         this.lastNode = newNode;
         this.lastNode.setPrevNode(previous);
-        this.length++;
+        incrementLength();
     }
 
     private void addFirstNode(Node<T> newNode){
         this.firstNode = newNode;
-        this.length++;
+        incrementLength();
     }
 
     @Override
@@ -59,14 +59,16 @@ public class DoubleLinkedList<T> implements MyLinkedList<T>{
             if(node == this.lastNode)
                 this.lastNode = prev;
 
-            this.length--;
+            decrementLength();
         }
     }
 
     @Override
     public T getElementAt(int index){
-        if(index >= this.length)
+        if(index > this.length){
+            System.out.println("Length: " + this.length + "index: " + index);
             throw new IndexOutOfBoundsException();
+        }
 
         Node<T> selectedNode = getNode(index);
 
@@ -82,7 +84,17 @@ public class DoubleLinkedList<T> implements MyLinkedList<T>{
     private void removeLastNode(){
         Node<T> penultimateNode = getNode(length -2);
         penultimateNode.setNextNode(null);
-        length--;
+        decrementLength();
+    }
+
+    private void decrementLength(){
+        this.length--;
+        //System.out.println(this.length);
+    }
+
+    private void incrementLength(){
+        this.length++;
+        //System.out.println(this.length);
     }
 
     /**
@@ -90,6 +102,9 @@ public class DoubleLinkedList<T> implements MyLinkedList<T>{
     * @param index is the index position at which to retrieve the Node
     */
     private Node<T> getNode(int index){
+        if(index == 0)
+            return null;
+
         if(index >= this.length)
             throw new IndexOutOfBoundsException();
 
