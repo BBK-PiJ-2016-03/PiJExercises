@@ -1,38 +1,74 @@
-public class DoubleLinkedList<T> implements LinkedList{
+public class DoubleLinkedList<T> implements MyLinkedList<T>{
 
     private Node<T> firstNode = null;
-    private int max = 0;
-    private int count = 0;
+    private Node<T> lastNode = null;
+    private int length = 0;
 
     @Override
-    public void add(String number){
-        Node<String> newNode = new Node<>(number);
-        newNode.setNextNode(this.firstNode);
+    public void add(T element){
+        Node<T> newNode = new Node<>(element);
 
-        this.firstNode = newNode;
-        this.count++;
-
-        if(this.count > this.max){
-            removeLastNode();
+        if(this.length == 0){
+            addFirstNode(newNode);
+            return;
         }
+
+        addNewNode(newNode);
+    }
+
+    private void addNewNode(Node<T> newNode){
+
+        Node<T> previous = this.lastNode;
+
+        if(previous == null)
+            previous = this.firstNode;
+
+        previous.setNextNode(newNode);
+        this.lastNode = newNode;
+        this.lastNode.setPrevNode(previous);
+        this.length++;
+    }
+
+    private void addFirstNode(Node<T> newNode){
+        this.firstNode = newNode;
+        this.length++;
     }
 
     @Override
     public int length(){
-        return count;
+        return this.length;
     }
 
     @Override
-    public int maxLength(){
-        return max;
+    public void remove(T value){
+        Node<T> node = getNode(value);
+
+        if(node != null){
+            Node<T> prev = node.getPrevNode();
+            Node<T> next = node.getNextNode();
+
+            if(prev != null)
+                prev.setNextNode(next);
+
+            if(next != null)    
+                next.setPrevNode(prev);
+
+            if(node == this.firstNode)
+                this.firstNode = next;
+
+            if(node == this.lastNode)
+                this.lastNode = prev;
+
+            this.length--;
+        }
     }
 
     @Override
-    public String getNumber(int index){
-        if(index >= max)
+    public T getElementAt(int index){
+        if(index >= this.length)
             throw new IndexOutOfBoundsException();
 
-        Node<String> selectedNode = getNode(index);
+        Node<T> selectedNode = getNode(index);
 
         if(selectedNode != null)
             return selectedNode.getValue();
@@ -41,28 +77,23 @@ public class DoubleLinkedList<T> implements LinkedList{
     }
 
     /**
-    * retrieve the node at a specified index in the collection
-    * @return the last node stored in the collection
-    */
-    private Node<String> getLastNode(){
-        return getNode(count - 1);
-    }
-
-    /**
-    * remove the node at a specified index in the collection
+    * remove the node at the end of the collection
     */
     private void removeLastNode(){
-        Node<String> penultimateNode = getNode(count -2);
+        Node<T> penultimateNode = getNode(length -2);
         penultimateNode.setNextNode(null);
-        count--;
+        length--;
     }
 
     /**
     * retrieve the node at a specified index in the collection
     * @param index is the index position at which to retrieve the Node
     */
-    private Node<String> getNode(int index){
-        Node<String> currentNode = firstNode;
+    private Node<T> getNode(int index){
+        if(index >= this.length)
+            throw new IndexOutOfBoundsException();
+
+        Node<T> currentNode = firstNode;
         for(int i = 1; i <= index; i++){
             currentNode = currentNode.getNextNode();
         }
@@ -71,15 +102,40 @@ public class DoubleLinkedList<T> implements LinkedList{
     }
 
     /**
-    * return a string of an iteration of all numbers held in the collection
+    * retrieve the node with the specified value in the collection
+    * @param value is the value to be held in the Node
+    */
+    private Node<T> getNode(T value){
+        Node<T> currentNode = firstNode;
+
+        if(currentNode == null)
+            return null;
+
+        while(currentNode != null){
+            if(currentNode.getValue().equals(value))
+                return currentNode;
+
+            currentNode = currentNode.getNextNode();
+
+            if(currentNode == null)
+                break;
+        }
+
+        return null;
+    }
+
+    /**
+    * return a string of an iteration of all elements held in the collection
     */
     @Override
     public String toString(){
-        String numbers = "";
-        for(int i = 0; i < this.count; i++){
-            numbers += "\n\t"+getNumber(i);
+        String values = "";
+        for(int i = 0; i < this.length; i++){
+            values += "\n\t"+getElementAt(i);
         }
-        return numbers;
+        return values;
     }
 
 }
+
+
