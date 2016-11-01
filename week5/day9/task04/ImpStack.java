@@ -11,7 +11,7 @@ public class ImpStack<T> implements GenericStack<T>{
         Node<T> node = this.firstNode;
         this.firstNode = this.firstNode.getNextNode();
         this.length--;
-        
+
         return node.getValue();
     }
 
@@ -27,11 +27,12 @@ public class ImpStack<T> implements GenericStack<T>{
 
         Node<T> node = new Node<>(element);
 
-        if(firstNode != null)
+        if(this.firstNode != null)
             node.setNextNode(firstNode);
 
-        firstNode = node;
+        this.firstNode = node;
 
+        this.length++;
     }
 
 }
