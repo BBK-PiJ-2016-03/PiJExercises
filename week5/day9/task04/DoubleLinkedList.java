@@ -8,7 +8,7 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
     public void add(T element){
         Node<T> newNode = new Node<>(element);
 
-        if(this.length == 0){
+        if(this.firstNode == null){
             addFirstNode(newNode);
             return;
         }
@@ -17,11 +17,13 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
     }
 
     private void addNewNode(Node<T> newNode){
-
+        
         Node<T> currentNode = this.firstNode;
 
         //look at each node in turn until we have one that we should not come after
-        while(newNode.getValue().compareTo(currentNode.getValue()) <= 0){
+        while(currentNode != null && newNode.getValue().compareTo(currentNode.getValue()) <= 0){
+            if(currentNode.getNextNode() == null)
+                break;
             currentNode = currentNode.getNextNode();
         }
         //place the current node after the new node
