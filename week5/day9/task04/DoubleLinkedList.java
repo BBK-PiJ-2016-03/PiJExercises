@@ -1,4 +1,4 @@
-public class DoubleLinkedList<T extends Comparable<T> implements MyLinkedList<T>{
+public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T>{
 
     private Node<T> firstNode = null;
     private Node<T> lastNode = null;
@@ -45,9 +45,9 @@ public class DoubleLinkedList<T extends Comparable<T> implements MyLinkedList<T>
             nextNode.setPrevNode(appendNode);
 
         if(appendNode.getNextNode() == null)
-            this.lastnode = appendNode;
+            this.lastNode = appendNode;
 
-        if(appendNnodee.getPrevNode() == null)
+        if(appendNode.getPrevNode() == null)
             this.firstNode = node;
 
         return;
