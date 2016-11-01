@@ -1,4 +1,4 @@
-public class DoubleLinkedList<T> implements MyLinkedList<T>{
+public class DoubleLinkedList<T extends Comparable<T> implements MyLinkedList<T>{
 
     private Node<T> firstNode = null;
     private Node<T> lastNode = null;
@@ -18,15 +18,39 @@ public class DoubleLinkedList<T> implements MyLinkedList<T>{
 
     private void addNewNode(Node<T> newNode){
 
-        Node<T> previous = this.lastNode;
+        Node<T> currentNode = this.firstNode;
 
-        if(previous == null)
-            previous = this.firstNode;
+        //look at each node in turn until we have one that we should not come after
+        while(newNode.getValue().compareTo(currentNode.getValue()) <= 0){
+            currentNode = currentNode.getNextNode();
+        }
+        //place the current node after the new node
+        appendNode(newNode, currentNode);
 
-        previous.setNextNode(newNode);
-        this.lastNode = newNode;
-        this.lastNode.setPrevNode(previous);
+        //check
+
         incrementLength();
+    }
+
+    private void appendNode(Node<T> node, Node<T> appendNode){
+        //point the appended node to whatever the next node is (can be null), and point the current node at the inserted node
+        appendNode.setNextNode(node.getNextNode());
+        node.setPrevNode(appendNode.getPrevNode());
+        appendNode.setPrevNode(node);
+        node.setNextNode(appendNode);
+
+        //attach the next node in the sequence to point back to the appended node
+        Node<T> nextNode = appendNode.getNextNode();
+        if(nextNode != null)
+            nextNode.setPrevNode(appendNode);
+
+        if(appendNode.getNextNode() == null)
+            this.lastnode = appendNode;
+
+        if(appendNnodee.getPrevNode() == null)
+            this.firstNode = node;
+
+        return;
     }
 
     private void addFirstNode(Node<T> newNode){
