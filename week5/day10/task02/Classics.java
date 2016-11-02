@@ -10,8 +10,8 @@ public class Classics{
         System.out.print(String.format(" = %d\n", classics.factorialRecursive(4)));
         */
 
-        for(int i = 1 ; i < 10; i++){
-            System.out.println(String.format("%d: %d", i, classics.fibonacciRecursive(i)));
+        for(int i = 1 ; i < 12; i++){
+            System.out.println(String.format("%d: %d", i, classics.fibonacciIterative(i)));
         }
 
     }
@@ -37,7 +37,29 @@ public class Classics{
         return n * factorialRecursive(n-1);
     }
 
+    private int fibonacciIterative(int n){
+        if(n == 1)
+            return 0;
+
+        if(n <= 3)
+            return 1;
+
+        int prevprev = 1;
+        int prev = 1;
+        int current = 0;
+        for(int i = 3; i < n; i++){
+            current = prev + prevprev;
+            prevprev = prev;
+            prev = current;
+        }
+
+        return current;
+    }
+
     private int fibonacciRecursive(int n){
+        if(n == 1)
+            return 0;
+
         if(n <= 3)
             return 1;
 
