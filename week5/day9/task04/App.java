@@ -2,12 +2,24 @@ public class App{
     public static void main(String[] args){
         MyLinkedList<String> stringList = new DoubleLinkedList<>();
         stringList.add("Four");
+        System.out.println("Length: " + stringList.length());
+        System.out.println("First: " + stringList.getElementAt(0));
         stringList.add("Two");
+        System.out.println("Length: " + stringList.length());
+        System.out.println("First: " + stringList.getElementAt(0));
         stringList.add("Three");
+        System.out.println("Length: " + stringList.length());
+        System.out.println("First: " + stringList.getElementAt(0));
         stringList.add("One");
+        System.out.println("Length: " + stringList.length());
+        System.out.println("First: " + stringList.getElementAt(0));
         stringList.add("Five");
+        System.out.println("Length: " + stringList.length());
+        System.out.println("First: " + stringList.getElementAt(0));
 
         stringList.remove("Three");
+        System.out.println("Length: " + stringList.length());
+        System.out.println("First: " + stringList.getElementAt(0));
 
         System.out.println("First: " + stringList.getElementAt(0));
         System.out.println("Length: " + stringList.length());

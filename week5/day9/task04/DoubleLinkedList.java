@@ -21,28 +21,43 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
         Node<T> currentNode = this.firstNode;
 
         //look at each node in turn until we have one that we should not come after
-        while(currentNode != null && newNode.getValue().compareTo(currentNode.getValue()) <= 0){
+        do{
             if(currentNode.getNextNode() == null)
                 break;
             currentNode = currentNode.getNextNode();
-        }
+        }while(currentNode != null && newNode.getValue().compareTo(currentNode.getValue()) <= 0);
         //place the current node after the new node
-        appendNode(newNode, currentNode);
+        prependNode(currentNode, newNode);
 
         //check
 
         incrementLength();
     }
 
+    private void prependNode(Node<T> node, Node<T> prependNode){
+        prependNode.setPrevNode(node.getPrevNode());
+        node.setPrevNode(prependNode);
+        prependNode.setNextNode(node);
+
+        if(prependNode.getPrevNode() != null){
+            prependNode.getPrevNode().setNextNode(prependNode);
+        }
+
+        if(this.firstNode.equals(node))
+            this.firstNode = prependNode;
+
+    }
+    /*
     private void appendNode(Node<T> node, Node<T> appendNode){
+        Node<T> nextNode = appendNode.getNextNode();
+
         //point the appended node to whatever the next node is (can be null), and point the current node at the inserted node
-        appendNode.setNextNode(node.getNextNode());
+        //appendNode.setNextNode(node.getNextNode());
         node.setPrevNode(appendNode.getPrevNode());
         appendNode.setPrevNode(node);
         node.setNextNode(appendNode);
 
-        //attach the next node in the sequence to point back to the appended node
-        Node<T> nextNode = appendNode.getNextNode();
+        //attach the next node in the sequence to point back to the appended node        
         if(nextNode != null)
             nextNode.setPrevNode(appendNode);
 
@@ -54,6 +69,7 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
 
         return;
     }
+    */
 
     private void addFirstNode(Node<T> newNode){
         this.firstNode = newNode;
@@ -92,7 +108,6 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
     @Override
     public T getElementAt(int index){
         if(index > this.length){
-            System.out.println("Length: " + this.length + "index: " + index);
             throw new IndexOutOfBoundsException();
         }
 
@@ -128,13 +143,13 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
     * @param index is the index position at which to retrieve the Node
     */
     private Node<T> getNode(int index){
-        if(index == 0)
+        if(this.length == 0)
             return null;
 
         if(index >= this.length)
             throw new IndexOutOfBoundsException();
 
-        Node<T> currentNode = firstNode;
+        Node<T> currentNode = this.firstNode;
         for(int i = 1; i <= index; i++){
             currentNode = currentNode.getNextNode();
         }
@@ -147,12 +162,13 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
     * @param value is the value to be held in the Node
     */
     private Node<T> getNode(T value){
-        Node<T> currentNode = firstNode;
+        Node<T> currentNode = this.firstNode;
 
         if(currentNode == null)
             return null;
 
         while(currentNode != null){
+
             if(currentNode.getValue().equals(value))
                 return currentNode;
 
