@@ -14,8 +14,9 @@ public class Classics{
         System.out.print("1 * ");
         for(int i = 2; i <= n; i++){
             total *= i;
-            System.out.print(String format(" * %d ", i));
+            System.out.print(String.format(" * %d ", i));
         }
+        return total;
     }
 
     private int factorialRecursive(int n) {
