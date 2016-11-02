@@ -21,15 +21,20 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
         Node<T> currentNode = this.firstNode;
 
         //look at each node in turn until we have one that we should not come after
-        do{
-            if(currentNode.getNextNode() == null)
-                break;
+        while(currentNode != null && newNode.getValue().compareTo(currentNode.getValue()) > 0){   
+            if(currentNode == null)
+                break;         
             currentNode = currentNode.getNextNode();
-        }while(currentNode != null && newNode.getValue().compareTo(currentNode.getValue()) <= 0);
-        //place the current node after the new node
-        prependNode(currentNode, newNode);
+        }
 
-        //check
+        if(currentNode == null){
+            //place the new node after the last node
+            appendNode(this.lastNode, newNode);
+        }
+        else{
+            //place the new node before the currentNode
+            prependNode(currentNode, newNode);
+        }
 
         incrementLength();
     }
@@ -47,32 +52,19 @@ public class DoubleLinkedList<T extends Comparable<T>> implements MyLinkedList<T
             this.firstNode = prependNode;
 
     }
-    /*
+    
     private void appendNode(Node<T> node, Node<T> appendNode){
-        Node<T> nextNode = appendNode.getNextNode();
-
-        //point the appended node to whatever the next node is (can be null), and point the current node at the inserted node
-        //appendNode.setNextNode(node.getNextNode());
-        node.setPrevNode(appendNode.getPrevNode());
+        appendNode.setNextNode(node.getNextNode());
         appendNode.setPrevNode(node);
         node.setNextNode(appendNode);
 
-        //attach the next node in the sequence to point back to the appended node        
-        if(nextNode != null)
-            nextNode.setPrevNode(appendNode);
-
-        if(appendNode.getNextNode() == null)
+        if(this.lastNode.equals(node))
             this.lastNode = appendNode;
-
-        if(appendNode.getPrevNode() == null)
-            this.firstNode = node;
-
-        return;
     }
-    */
 
     private void addFirstNode(Node<T> newNode){
         this.firstNode = newNode;
+        this.lastNode = newNode;
         incrementLength();
     }
 
