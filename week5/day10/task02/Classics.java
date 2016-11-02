@@ -2,11 +2,17 @@ public class Classics{
     public static void main(String[] args){
         Classics classics = new Classics();
 
+        /*
         System.out.print("4! : ");
         System.out.print(String.format(" = %d\n", classics.factorialIterative(4)));
 
         System.out.print("4! : ");
         System.out.print(String.format(" = %d\n", classics.factorialRecursive(4)));
+        */
+
+        for(int i = 1 ; i < 10; i++){
+            System.out.println(String.format("%d: %d", i, classics.fibonacciRecursive(i)));
+        }
 
     }
 
@@ -29,5 +35,12 @@ public class Classics{
         System.out.print(output);
 
         return n * factorialRecursive(n-1);
+    }
+
+    private int fibonacciRecursive(int n){
+        if(n <= 3)
+            return 1;
+
+        return fibonacciRecursive(n-1) + fibonacciRecursive(n-2);
     }
 }
