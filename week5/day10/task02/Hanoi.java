@@ -2,14 +2,14 @@ public class Hanoi{
     public static void main(String[] args){
         Hanoi han = new Hanoi();
 
-        for(int i = 1; i < 10; i++){
+        for(long i = 1; i <= 64; i++){
             System.out.println(String.format("%d : %d", i, han.getHanoiMoves(i)));
         }
         
 
     }
 
-    private int getHanoiMoves(int discs){
+    private long getHanoiMoves(long discs){
         //move one disc = 1 move
         //move two discs = 3 moves
         //move three discs = 7 moves
