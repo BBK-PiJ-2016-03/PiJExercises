@@ -62,12 +62,30 @@ public class IntegerTreeNode{
         return this.left.getMin();
     }
 
+    public int depth(){
+        return depth(0);
+    }
+
+    public int depth(int depth){
+        int leftDepth = depth;
+        int righttDepth = depth;
+
+        if(this.left != null)
+            leftDepth = this.left.depth(leftDepth + 1);
+
+        if(this.right != null)
+            righttDepth = this.right.depth(righttDepth + 1);
+
+        return leftDepth > righttDepth ? leftDepth : righttDepth;
+    }
+
+
     @Override
     public String toString() {
         String output =  "[" + this.value + " L";
-        output += this.left != null ? this.left.toString() : "";
+        output += this.left != null ? this.left.toString() : "[]";
         output += " R";
-        output += this.right != null ? this.right.toString() : "";
+        output += this.right != null ? this.right.toString() : "[]";
         output += "]";
 
         return output;
