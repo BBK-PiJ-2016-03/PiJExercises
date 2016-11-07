@@ -2,10 +2,31 @@ public class Tests {
 
     public static void main (String[] args) {
         Tests tests = new Tests();
-        tests.treeIntSet();
+        tests.listIntSet();
     } 
 
-    public void treeIntSet(){
+    private  void listIntSet(){
+        IntSet tree = new ListIntSet(15);
+
+        int[] numbers = new int[]{5, 12, 76, 3, 97, 2};
+
+        for(int number : numbers){
+            tree.add(number);
+        }
+
+        System.out.println("Tree contains 12 (true): " + tree.contains(12));
+        System.out.println("Tree contains 2 (true): " + tree.containsVerbose(2));
+        System.out.println("Tree contains 76 (true): " + tree.contains(76));
+        System.out.println("---");
+        System.out.println("Tree contains 99 (false): " + tree.contains(99));
+        System.out.println("Tree contains 0 (false): " + tree.containsVerbose(0));
+        System.out.println("Tree contains -5 (false): " + tree.contains(-5));
+        System.out.println("---");
+        System.out.println(tree.toString());
+        
+    }
+
+    private void treeIntSet(){
         IntSet tree = new TreeIntSet(15);
 
         int[] numbers = new int[]{5, 12, 76, 3, 97, 2};
@@ -26,7 +47,7 @@ public class Tests {
         
     }
 
-    public void addAndSeek() {
+    private void addAndSeek() {
         IntegerTreeNode node = new IntegerTreeNode(12);
 
         int[] numbers = new int[] {5, 3, 21, 7, 9, 0, -1, 3, 23};

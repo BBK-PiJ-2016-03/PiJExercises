@@ -78,7 +78,7 @@ public class TreeIntSet implements IntSet{
 
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder(100);
+        StringBuilder sb = new StringBuilder();
         sb.append(this.value+" | ");
         sb.append(this.left == null ? "" : this.left.toString());
         sb.append(this.right == null ? "" : this.right.toString());
