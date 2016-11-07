@@ -18,6 +18,8 @@ public class Tests {
         System.out.println("Contains 23: " + node.contains(23));
         System.out.println("Get max: " + node.getMax());
         System.out.println("Get min: " + node.getMin());
+
+        System.out.println(node.toString());
     }
 
 }

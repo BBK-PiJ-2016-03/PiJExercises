@@ -62,4 +62,9 @@ public class IntegerTreeNode{
         return this.left.getMin();
     }
 
+    @Override
+    public String toString() {
+        return "[" + this.value + " L" this.left.toString() + " R" + this.right.toString() + "]";
+    }
+
 }
