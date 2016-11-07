@@ -3,6 +3,10 @@ public class IntegerTreeNode{
     IntegerTreeNode left;
     IntegerTreeNode right;
 
+    public IntegerTreeNode (int number) {
+        this.value = number;
+    }
+
     public void add(int newNumber){
         if (newNumber > this.value) {
             if (right == null) {
