@@ -38,7 +38,7 @@ public class ListIntSet implements IntSet{
     }
 
     public String toString(){        
-        return this.value + (this.nextNode == null ? "" : this.nextNode.toString());
+        return " | " + this.value + (this.nextNode == null ? "" : this.nextNode.toString());
     }
 
 }

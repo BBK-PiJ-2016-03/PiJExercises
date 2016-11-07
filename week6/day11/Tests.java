@@ -14,13 +14,13 @@ public class Tests {
             tree.add(number);
         }
 
-        System.out.println("Tree contains 12 (true): " + tree.contains(12));
-        System.out.println("Tree contains 2 (true): " + tree.containsVerbose(2));
-        System.out.println("Tree contains 76 (true): " + tree.contains(76));
+        System.out.println("List contains 12 (true): " + tree.contains(12));
+        System.out.println("List contains 2 (true): " + tree.containsVerbose(2));
+        System.out.println("List contains 76 (true): " + tree.contains(76));
         System.out.println("---");
-        System.out.println("Tree contains 99 (false): " + tree.contains(99));
-        System.out.println("Tree contains 0 (false): " + tree.containsVerbose(0));
-        System.out.println("Tree contains -5 (false): " + tree.contains(-5));
+        System.out.println("List contains 99 (false): " + tree.contains(99));
+        System.out.println("List contains 0 (false): " + tree.containsVerbose(0));
+        System.out.println("List contains -5 (false): " + tree.contains(-5));
         System.out.println("---");
         System.out.println(tree.toString());
         
