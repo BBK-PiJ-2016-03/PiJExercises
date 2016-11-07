@@ -1,7 +1,7 @@
 public class IntegerTreeNode{
-    int value;
-    IntegerTreeNode left;
-    IntegerTreeNode right;
+    private int value;
+    private IntegerTreeNode left;
+    private IntegerTreeNode right;
 
     public IntegerTreeNode (int number) {
         this.value = number;
@@ -66,7 +66,7 @@ public class IntegerTreeNode{
         return depth(0);
     }
 
-    public int depth(int depth){
+    private int depth(int depth){
         int leftDepth = depth;
         int righttDepth = depth;
 
