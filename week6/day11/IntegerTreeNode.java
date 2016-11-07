@@ -64,7 +64,13 @@ public class IntegerTreeNode{
 
     @Override
     public String toString() {
-        return "[" + this.value + " L" + this.left.toString() + " R" + this.right.toString() + "]";
+        String output =  "[" + this.value + " L";
+        output += this.left != null ? this.left.toString() : "";
+        output += " R";
+        output += this.right != null ? this.right.toString() : "";
+        output += "]";
+
+        return output;
     }
 
 }
