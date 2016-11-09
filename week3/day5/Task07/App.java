@@ -23,41 +23,43 @@ public class App{
     }
 
     private void handleResult(Result response){
+
         switch(response){
-            case Result.HIT:
+            case HIT:
                 System.out.println("You hit it! Well done!\nWould you like to play again?");
                 play = System.console().readLine().toLowerCase();
                 break;            
-            case Result.FAIL_LEFT:
+            case FAIL_LEFT:
                 System.out.println("You missed! The target is to the right!");
                 break;
-            case Result.FAIL_RIGHT:
+            case FAIL_RIGHT:
                 System.out.println("You missed! The target is to the left!");
                 break;
-            case Result.FAIL_HIGH:
+            case FAIL_HIGH:
                 System.out.println("You missed! The target is lower!");
                 break;
-            case Result.FAIL_LOW:
+            case FAIL_LOW:
                 System.out.println("You missed! The target is higher!");
                 break;
-            case Result.FAIL_SHORT:
+            case FAIL_SHORT:
                 System.out.println("You missed! The target is further!");
                 break;
-            case Result.FAIL_LONG:
+            case FAIL_LONG:
                 System.out.println("You missed! The target is nearer!");
                 break;
-            case Result.OUT_OF_RANGE:
+            case OUT_OF_RANGE:
                 System.out.println("That shot is way out of range. Try harder!");
                 break;
         }
     }
 
     private int getValue(String coord){
+        String val;
         while(val == ""){
             System.out.print("Enter a coordinate " + coord + ": ");
             try{
                 val = System.console().readLine();
-                int x = Integer.parseint(val);
+                int x = Integer.parseInt(val);
                 return x;
             }
             catch(NumberFormatException e){
