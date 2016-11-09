@@ -33,7 +33,7 @@ public class App{
 
         switch(response){
             case HIT:
-                System.out.println("You hit it! Well done!\nWould you like to play again?");
+                System.out.println("You hit it! Well done!\nWould you like to play again? (Y/N)");
                 return System.console().readLine().toLowerCase();
             case FAIL_LEFT:
                 System.out.println("You missed! The target is to the right!");
