@@ -13,7 +13,7 @@ public class Target{
 
     private void init(){
         this.target = getRandomTargetCoordinate(this.size);
-        System.out.println("Target: "+this.target);
+        //System.out.println("Target: "+this.target);
         this.space[this.target.getX()][this.target.getY()][this.target.getZ()] = 1;
     }
 

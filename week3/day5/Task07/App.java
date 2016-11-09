@@ -29,12 +29,22 @@ public class App{
         return (int)Math.floor(Math.random() * 50);
     }
 
+    private String replayQuery(){
+        System.out.println("You hit it! Well done!\nWould you like to play again? (Y/N)");
+        String response = "";
+        while(!response.equals("y") && !response.equals("n")){
+            response = System.console().readLine().toLowerCase();
+            if(!response.equals("y") && !response.equals("n"))
+                System.out.println("Please enter y to play again, or n to quit");
+        }
+        return response;     
+    }
+
     private String handleResult(Result response){
 
         switch(response){
             case HIT:
-                System.out.println("You hit it! Well done!\nWould you like to play again? (Y/N)");
-                return System.console().readLine().toLowerCase();
+                return replayQuery();
             case FAIL_LEFT:
                 System.out.println("You missed! The target is to the right!");
                 break;
