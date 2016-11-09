@@ -1,19 +1,34 @@
 public class App{
     public static void main(String[] args){
+        int[] source = {9,4,67,54,2,345,2,5};
+        int[] arr8 = new int[8];
+        int[] arr12 = new int[12];
+        int[] arr5 = new int[5];
 
-        Matrix matrix = new Matrix(3,5);
+        printArray(source, "Source: ");
 
-        matrix.setColumn(1, "1,2,3,4,5");
+        ArrayCopier copier = new ArrayCopier();
 
-        matrix.setRow(1, "1,2,3,4,5");
+        //Both arrays are of the same size.
+        copier.copy(source, arr8);
+        printArray(arr8, "Copied, same size: ");
 
-        matrix.setElement(2,4,9);
+        // The source array is longer.
+        copier.copy(source, arr5);
+        printArray(arr5, "Copied, source longer: ");
 
-        System.out.println(matrix.toString());
+        //The source array is shorter.
+        copier.copy(source, arr12);
+        printArray(arr12, "Copied, source shorter: ");
 
-        System.out.println(matrix.prettyPrint());
 
+    }
 
-
+    private static void printArray(int[] arr, String label){
+        System.out.print(label);
+        for(int value : arr){
+            System.out.print(value + ", ");
+        }
+        System.out.println();
     }
 }

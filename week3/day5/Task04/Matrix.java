@@ -1,4 +1,3 @@
-//4 One-liners for matrices (*)
 public class Matrix{
     public int[][] matrix;
 
@@ -65,21 +64,6 @@ public class Matrix{
         }
 
         return integerValues;
-    }
-
-    public void setMatrix(String values){
-        values = values.replace("[", "");
-        values = values.replace("]", "");
-        String[] rowsData = getRowData(values);
-
-        for(int i = 0; i < rowsData.length; i++){
-            setRow(i, rowsData[i]);
-        }
-    }
-
-    private String[] getRowData(String values){
-        values = values.replace(" ", "");
-        return values.split(";");
     }
 
     @Override
