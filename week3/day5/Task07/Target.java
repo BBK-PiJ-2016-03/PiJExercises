@@ -11,8 +11,8 @@ public class Target{
         init();
     }
 
-    private void init(int size){
-        this.target = getRandomTargetCoordinate(size);
+    private void init(){
+        this.target = getRandomTargetCoordinate(this.size);
         this.space[this.target.getX()][this.target.getY()][this.target.getZ()] = 1;
     }
 
