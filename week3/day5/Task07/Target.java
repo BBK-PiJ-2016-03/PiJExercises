@@ -13,6 +13,7 @@ public class Target{
 
     private void init(){
         this.target = getRandomTargetCoordinate(this.size);
+        System.out.println("Target: "+this.target);
         this.space[this.target.getX()][this.target.getY()][this.target.getZ()] = 1;
     }
 
@@ -24,25 +25,51 @@ public class Target{
         return (int) Math.abs(max * Math.random());
     }
 
-    private Result checkAccuracy(int shot, int targetValue){
+    private Result checkAccuracy(int shot, int targetValue, String axis){
         if(shot < targetValue){
             if(shot < 0)
                 return Result.OUT_OF_RANGE;
-            return Result.FAIL_LEFT;
+            return getLower(axis);
         }
         else if(shot > targetValue){
             if(shot > this.size)
                 return Result.OUT_OF_RANGE;
-            return Result.FAIL_RIGHT;
+            return getHigher(axis);
         }
         return Result.HIT;
     }
 
+    private Result getLower(String axis){
+        switch(axis){
+            case "x":
+                return Result.FAIL_LEFT;
+
+            case "y":
+                return Result.FAIL_LOW;
+
+            default:
+                return Result.FAIL_SHORT;
+        }
+    }
+
+    private Result getHigher(String axis){
+        switch(axis){
+            case "x":
+                return Result.FAIL_RIGHT;
+
+            case "y":
+                return Result.FAIL_HIGH;
+
+            default:
+                return Result.FAIL_LONG;
+        }
+    }
+
     public Result fire(int shotX, int shotY, int shotZ){        
 
-        Result horizontal = checkAccuracy(shotX, this.target.getX());
-        Result vertical = checkAccuracy(shotY, this.target.getY());
-        Result depth = checkAccuracy(shotZ, this.target.getZ());
+        Result horizontal = checkAccuracy(shotX, this.target.getX(), "x");
+        Result vertical = checkAccuracy(shotY, this.target.getY(), "y");
+        Result depth = checkAccuracy(shotZ, this.target.getZ(), "z");
 
         if(    horizontal.equals(Result.HIT) 
             && vertical.equals(Result.HIT) 
