@@ -1,7 +1,11 @@
 public class ArrayChecker{
     public static void main(String[] args){
         ArrayChecker ac = new ArrayChecker();
-        System.out.println("Symmetrical: " + ac.isSymetrical());
+        int[] arr = new int[]{1,2,3,4,5,4,3,2,1};
+        System.out.println("Symmetrical (true): " + ac.isSymetrical(arr));
+
+        int[] arr2 = new int[]{1,1,2,3,4,5,4,3,2,1};
+        System.out.println("Symmetrical (false): " + ac.isSymetrical(arr2));
     }
 
     private boolean isSymetrical(int[] arr){   
@@ -20,7 +24,7 @@ public class ArrayChecker{
     }
 
     private int[] reverse(int[] arr){
-        
+        return new int[0];
     }
 
     public int[] copy(int[] source, int startIndex, int endIndex){
@@ -37,5 +41,7 @@ public class ArrayChecker{
             destination[j] = source[i];
             j++;
         }
+
+        return destination;
     }
 }
