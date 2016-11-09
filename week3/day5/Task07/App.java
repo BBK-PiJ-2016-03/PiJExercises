@@ -17,6 +17,9 @@ public class App{
                 Coordinate3D coord = new Coordinate3D(x, y, z);
                 Result response = target.fire(coord);
 
+                if(response.equals(Result.HIT))
+                    strike = true;
+
                 play = app.handleResult(response);
             }
         }
