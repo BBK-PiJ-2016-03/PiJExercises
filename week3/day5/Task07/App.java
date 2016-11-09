@@ -4,7 +4,7 @@ public class App{
         App app = new App();
         String play = "y";
         while(!play.equals("n")){
-            Target target = new Target();
+            Target target = new Target(app.getRandomPlayZone());
 
             System.out.println("Here they come! Try to bring the plane down!");
             boolean strike = false;
@@ -14,21 +14,24 @@ public class App{
                 int y = app.getValue("y");
                 int z = app.getValue("z");     
 
-                Coordinate coord = new Coordinate(x, y, z);
+                Coordinate3D coord = new Coordinate3D(x, y, z);
                 Result response = target.fire(coord);
 
-                handleResult(response);
+                play = app.handleResult(response);
             }
         }
     }
 
-    private void handleResult(Result response){
+    private int getRandomPlayZone(){
+        return (int)Math.floor(Math.random() * 50);
+    }
+
+    private String handleResult(Result response){
 
         switch(response){
             case HIT:
                 System.out.println("You hit it! Well done!\nWould you like to play again?");
-                play = System.console().readLine().toLowerCase();
-                break;            
+                return System.console().readLine().toLowerCase();
             case FAIL_LEFT:
                 System.out.println("You missed! The target is to the right!");
                 break;
@@ -51,20 +54,24 @@ public class App{
                 System.out.println("That shot is way out of range. Try harder!");
                 break;
         }
+        return "y";
     }
 
     private int getValue(String coord){
-        String val;
-        while(val == ""){
+        String val = "";
+        int response = 0;
+        while(val.equals("")){
             System.out.print("Enter a coordinate " + coord + ": ");
             try{
                 val = System.console().readLine();
-                int x = Integer.parseInt(val);
-                return x;
+                response = Integer.parseInt(val);
+                return response;
             }
             catch(NumberFormatException e){
                 System.out.print("Invalid entry");
+                val = "";
             }                
         }
+        return response;
     }
 }

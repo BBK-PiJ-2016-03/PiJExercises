@@ -16,7 +16,7 @@ public class Target{
         this.space[this.target.getX()][this.target.getY()][this.target.getZ()] = 1;
     }
 
-    private Coordinate3D getRandomTargetCoordinate(size){
+    private Coordinate3D getRandomTargetCoordinate(int size){
         return new Coordinate3D(getRandom(size), getRandom(size), getRandom(size));
     }
 
@@ -58,6 +58,8 @@ public class Target{
 
         if(depth != Result.HIT)
             return depth;
+
+        return Result.HIT;
     }
 
     public Result fire(Coordinate3D shot){
