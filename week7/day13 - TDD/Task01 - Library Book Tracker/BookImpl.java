@@ -3,7 +3,7 @@ public class BookImpl implements Book{
     private String title;
     private String author;    
 
-    public name(String title, String author) {
+    public BookImpl(String title, String author) {
         this.author = author;
         this.title = title;
     }
