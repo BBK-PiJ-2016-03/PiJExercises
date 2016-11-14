@@ -10,15 +10,8 @@ public class UserImpl implements User{
     public int getLibraryID(){
         return (int)this.libraryID;
     }
-
-    public int setLibraryID(int libraryID){
-        if(this.libraryID == null)
-            this.libraryID = new Integer(libraryID);
-    }
     
     public String getName(){
         return this.name;
     }
-
-
 }
