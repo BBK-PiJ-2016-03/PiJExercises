@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 public class TestLibrary{
     Library lib;
 
-    private void nameMatch(String name){
-        this.lib = new LibraryImpl(name);
-        assertEquals(name, this.lib.getName());
-    }
-
     @Test
     public void testGetNameSingleWord(){
         nameMatch("Name");        
+    }
+
+    private void nameMatch(String name){
+        this.lib = new LibraryImpl(name);
+        assertEquals(name, this.lib.getName());
     }
 
     @Test
@@ -41,22 +41,31 @@ public class TestLibrary{
 
     @Test
     public void getMaxBooksPerUserNegative(){
-        this.lib = new LibraryImpl(name);
-        lib.setMaxBooksPerUser(-5);
-        assertEquals(0, this.lib.getMaxBooksPerUser());
+        Library lib = setMaxBooks(-5);
+        assertEquals(1, lib.getMaxBooksPerUser());
+    }
+
+    private Library setMaxBooks(int max){
+        this.lib = new LibraryImpl("name");
+        lib.setMaxBooksPerUser(max);
+        return this.lib;
     }
 
     @Test
     public void getMaxBooksPerUserZero(){
-        this.lib = new LibraryImpl(name);
-        lib.setMaxBooksPerUser(0);
-        assertEquals(0, this.lib.getMaxBooksPerUser());
+        Library lib = setMaxBooks(0);
+        assertEquals(1, lib.getMaxBooksPerUser());
+    }
+
+    @Test
+    public void getMaxBooksPerUserOne(){
+        Library lib = setMaxBooks(1);
+        assertEquals(1, lib.getMaxBooksPerUser());
     }
 
     @Test
     public void getMaxBooksPerUserPositive(){
-        this.lib = new LibraryImpl(name);
-        lib.setMaxBooksPerUser(8);
-        assertEquals(8, this.lib.getMaxBooksPerUser());
+        Library lib = setMaxBooks(13);
+        assertEquals(8, lib.getMaxBooksPerUser());
     }
 }
