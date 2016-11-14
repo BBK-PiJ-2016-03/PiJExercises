@@ -7,4 +7,12 @@ public class MockLibrary implements Library{
     public String getName(){
         return "Library name";
     }
+
+    public int getMaxBooksPerUser(){
+
+    }
+
+    public int setMaxBooksPerUser(int max){
+        
+    }
 }

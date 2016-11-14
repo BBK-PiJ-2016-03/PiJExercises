@@ -13,6 +13,12 @@ public interface Library{
     String getName();
 
     /**
+     * set the maximum number of books that can be loaned per person
+     * @param int max set maximum number of borrowable books
+     */
+    int setMaxBooksPerUser(int max);
+
+    /**
      * get the maximum number of books that can be loaned per person
      * @return int max number of borrowable books
      */

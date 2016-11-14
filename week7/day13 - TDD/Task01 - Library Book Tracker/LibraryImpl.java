@@ -13,4 +13,8 @@ public class LibraryImpl implements Library{
     public String getName(){
         return this.name;
     }
+
+    public int getMaxBooksPerUser(){
+        return 5;
+    }
 }
