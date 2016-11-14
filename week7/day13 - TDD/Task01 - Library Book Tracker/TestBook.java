@@ -1,38 +1,76 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class TestBook{
-    
+public class TestBook{    
    Book book;
 
-    public static void main(String[] args) {
-        
-        TestBook test = new TestBook();
-        test.testGetAuthor();
-    
+    @Test
+    public void testGetAuthorSingleWord() {        
+        String expected = "Author";
+        this.book = new BookImpl("Title", expected);
+        assertEquals(expected, book.getAuthor());        
     }
 
     @Test
-    public void testGetAuthor() {
-        
-        String expected = "Author";
-        book = new BookImpl("Title", expected);
-        assertEquals(book.getAuthor(), expected, "Expected author not returned");
+    public void testGetAuthorUsingSpace() {
+        String expected = "My Author";
+        this.book = new BookImpl("Title", expected);
+        assertEquals(expected, book.getAuthor());
+    }
 
-        expected = "My Author";
-        book = new BookImpl("Title", expected);
-        assertEquals(book.getAuthor(), expected, "Expected author not returned");
+    @Test
+    public void testGetAuthorUsingSpecialChars() {
+        String expected = "An Aut                               hor! .''. !£$%^&&((_(()+";
+        this.book = new BookImpl("Title", expected);
+        assertEquals(expected, book.getAuthor());        
+    }
 
-        expected = "An Aut                               hor! .''. !£$%^&&((_(()+";
-        book = new BookImpl("Title", expected);
-        assertEquals(book.getAuthor(), expected, "Expected author not returned");
+    @Test
+    public void testGetAuthorUsingEmpty() {
+        String expected = "";
+        this.book = new BookImpl("Title", expected);
+        assertEquals(expected, book.getAuthor());
+    }
 
-        expected = "";
-        book = new BookImpl("Title", expected);
-        assertEquals(book.getAuthor(), expected, "Expected author not returned");
+    @Test
+    public void testGetAuthorUsingNull() {     
+        String expected = null;
+        this.book = new BookImpl("Title", expected);
+        assertEquals(expected, book.getAuthor());
+    }    
 
-        expected = null;
-        book = new BookImpl("Title", expected);
-        assertEquals(book.getAuthor(), expected, "Expected author not returned");
+    @Test
+    public void testGetTitleSingleWord() {        
+        String expected = "Title";
+        this.book = new BookImpl(expected, "Author");
+        assertEquals(expected, book.getTitle());
+    }
+
+    @Test
+    public void testGetTitleUsingSpace() {
+        String expected = "My Title";
+        this.book = new BookImpl(expected, "Author");
+        assertEquals(expected, book.getTitle());
+    }
+
+    @Test
+    public void testGetTitleUsingSpecialChars() {
+        String expected = "An Ti                                  tle! .''. !£$%^&&((_(()+";
+        this.book = new BookImpl(expected, "Author");
+        assertEquals(expected, book.getTitle());
+    }
+
+    @Test
+    public void testGetTitleUsingEmpty() {
+        String expected = "";
+        this.book = new BookImpl(expected, "Author");
+        assertEquals(expected, book.getTitle());
+    }
+
+    @Test
+    public void testGetTitleUsingNull() {
+        String expected = null;
+        this.book = new BookImpl(expected, "Author");
+        assertEquals(expected, book.getTitle());
     }
 }

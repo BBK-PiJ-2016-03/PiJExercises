@@ -1,9 +1,9 @@
 public interface LibraryUser{
     /**
-     * register the book with a library
+     * register the user with a library
      * @param library is the library object to register against
      */
-    register(Library library);
+    void register(Library library);
 
     /**
      * get the libray the book is registered to
