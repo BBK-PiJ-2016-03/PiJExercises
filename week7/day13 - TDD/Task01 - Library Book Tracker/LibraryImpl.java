@@ -1,14 +1,22 @@
-public class LibraryImpl implements Library{
+import java.util.Hashtable;
 
-    private String name;
+public class LibraryImpl implements Library{
+    private Hashtable<int, LibraryUser> members = new LinkedList<>();    
+    private String libraryName;
     private int maxBooksPerUser = 3;
 
     public LibraryImpl(String name) {
-        this.name = name;
+        this.libraryName = name;
     }
 
     public int register(LibraryUser user){
-        return 13;
+        int id = getId(user.getName())
+
+        members.put(id, user);
+    }
+
+    public int getId(String name){
+        return name.hashCode();
     }
 
     public String getName(){
