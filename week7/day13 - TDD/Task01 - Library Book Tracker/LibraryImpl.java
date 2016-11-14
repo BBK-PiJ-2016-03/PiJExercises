@@ -15,7 +15,7 @@ public class LibraryImpl implements Library{
         return this.name;
     }
 
-    public int setMaxBooksPerUser(int max){
+    public void setMaxBooksPerUser(int max){
         if(max < 1)
             max = 1;
 
@@ -23,6 +23,6 @@ public class LibraryImpl implements Library{
     }
 
     public int getMaxBooksPerUser(){
-        return 5;
+        return this.maxBooksPerUser;
     }
 }

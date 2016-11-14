@@ -47,7 +47,7 @@ public class TestLibrary{
 
     private Library setMaxBooks(int max){
         this.lib = new LibraryImpl("name");
-        lib.setMaxBooksPerUser(max);
+        this.lib.setMaxBooksPerUser(max);
         return this.lib;
     }
 
@@ -66,6 +66,6 @@ public class TestLibrary{
     @Test
     public void getMaxBooksPerUserPositive(){
         Library lib = setMaxBooks(13);
-        assertEquals(8, lib.getMaxBooksPerUser());
+        assertEquals(13, lib.getMaxBooksPerUser());
     }
 }

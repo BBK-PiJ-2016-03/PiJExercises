@@ -16,7 +16,7 @@ public interface Library{
      * set the maximum number of books that can be loaned per person
      * @param int max set maximum number of borrowable books
      */
-    int setMaxBooksPerUser(int max);
+    void setMaxBooksPerUser(int max);
 
     /**
      * get the maximum number of books that can be loaned per person
