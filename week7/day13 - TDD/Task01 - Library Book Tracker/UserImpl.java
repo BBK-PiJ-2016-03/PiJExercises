@@ -22,6 +22,6 @@ public class UserImpl implements User, LibraryUser{
     }
 
     public Library getLibrary(){
-        return this.library;
+        return this.library.getName();
     }
 }

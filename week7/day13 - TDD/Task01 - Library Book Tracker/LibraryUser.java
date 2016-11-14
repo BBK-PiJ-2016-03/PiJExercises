@@ -14,9 +14,9 @@ public interface LibraryUser{
 
     /**
      * get the library the book is registered to
-     * @return library is the library object to register against
+     * @return String is the name ofthe library object to register against
      */
-    Library getLibrary(); 
+    String getLibrary(); 
 
     /**
      * get the user's library ID

@@ -41,10 +41,20 @@ public class TestUser{
     }    
 
     @Test
-    public void testGetLibraryID(){
+    public void testGetLibraryIDRange(){
+        this.user = getUserAssignedMockLibrary();
+        assertTrue(user.getLibraryID() >= 0);
+    }
+
+    @Test
+    public void testGetLibraryIDMatches(){
+        this.user = getUserAssignedMockLibrary();
+        assertEquals(13, user.getLibraryID());
+    }
+
+    private void getUserAssignedMockLibrary(){
         LibraryUser user = new UserImpl("New User");
         Library mock = new MockLibrary();
         user.register(mock);
-        assertTrue(((User)user).getLibraryID() >= 0);
     }
 }
