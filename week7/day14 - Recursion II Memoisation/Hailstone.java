@@ -1,4 +1,8 @@
+import java.util.*;
+
 public class Hailstone{
+
+    private List<Integer> hailInts = new ArrayList<>();
 
     public static void main(String[] args){
         Hailstone hail = new Hailstone();
@@ -7,6 +11,10 @@ public class Hailstone{
             hailNum = hail.getHailNum(args[0]);
 
         hail.getHailStone(hailNum);
+
+        for(int num : hail.hailInts){
+            System.out.print(num + " ");
+        }
     }
 
      private int getHailNum(String arg){
@@ -21,7 +29,7 @@ public class Hailstone{
     }
 
     private void getHailStone(int n){     
-        System.out.print(n + " ");
+        hailInts.add(n);
         if(n == 1)
             return;
 
