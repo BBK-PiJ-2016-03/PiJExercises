@@ -5,20 +5,20 @@ public class Fibonacci{
     public static void main(String[] args){
         Fibonacci fb = new Fibonacci();
 
-        int start, end;
+        long start, end;
 
-        start = System.nanotime;
+        start = System.nanoTime();
         System.out.println(fb.fib(100));
-        end = System.nanotime;
-        System.out.println(getMs(start, end));
+        end = System.nanoTime();
+        System.out.println(fb.getMs(start, end));
 
-        start = System.nanotime;
+        start = System.nanoTime();
         System.out.println(fb.fibMemo(100));
-        end = System.nanotime;
-        System.out.println(getMs(start, end));
+        end = System.nanoTime();
+        System.out.println(fb.getMs(start, end));
     }
 
-    private String getMs(int start, int end){
+    private String getMs(long start, long end){
         return (end - start)*1E-6 + "ms";
     }
 
@@ -42,10 +42,10 @@ public class Fibonacci{
         return this.memoisation[n];        
     }
 
-    private void initMemoisationArray(size){
+    private void initMemoisationArray(int size){
         this.memoisation = new int[size];
 
-        this.memoisation[0] = this.memoisation1[1] = 1;   
+        this.memoisation[0] = this.memoisation[1] = 1;   
 
         for(int i = 2; i < size-1; i++){
             this.memoisation[i] = -1;
