@@ -22,7 +22,7 @@ public class Task3a{
 
         while(numbers.size() < total){
             try{
-                System.out.print("Please enter a valid number :");
+                System.out.print(String.format("Please enter number %d :", (numbers.size()+1)));
                 String input = System.console().readLine();
                 int number = Integer.parseInt(input);
                 numbers.add(number);
@@ -35,7 +35,7 @@ public class Task3a{
         return numbers;
     }
 
-    private int getAverage(List<Integers> numbers){
+    private int getAverage(List<Integer> numbers){
 
         if(numbers.size() == 0)
             return 0;
