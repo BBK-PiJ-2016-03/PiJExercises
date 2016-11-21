@@ -14,7 +14,8 @@ public class MorePatients{
     private void run(){
         boolean running = true;
         while(running){
-        running = showMenu();
+            running = showMenu();
+        }
     }
 
     private boolean showMenu(){
@@ -28,7 +29,7 @@ public class MorePatients{
     }
 
     private String getUserResponse(){
-        String choice = System.console().readLine();        
+        return System.console().readLine();        
     }
 
     private boolean handleUserResponse(String response){
@@ -44,7 +45,6 @@ public class MorePatients{
             default:
                 System.out.println("That was not a valid input");
                 return true;
-                break;
         }
     }
 
@@ -56,16 +56,19 @@ public class MorePatients{
     }
 
     private void printPatients(){
-        for(patient : this.patients){
+        System.out.println("------");
+        System.out.println("Patients: "+this.patients.size());
+        for(Patient patient : this.patients){
             System.out.println(patient);
-        }
+        }        
+        System.out.println("------");
     }    
 
     private String getPatientName(){
         String name = "";
         while(name == ""){
-            System.out.print("Please enter the patient's name: '");
-            String name = System.console().readLine();
+            System.out.print("Please enter the patient's name: ");
+            name = System.console().readLine();
         }        
         return name;
     }
@@ -74,8 +77,8 @@ public class MorePatients{
         int age = -1;
         while(age < 0 || age >= 130){
             try{
-                System.out.print("Please enter the patient's age: '");
-                int age = Integer.parseInt(System.console().readLine());
+                System.out.print("Please enter the patient's age: ");
+                age = Integer.parseInt(System.console().readLine());
             }
             catch(NumberFormatException e){
                 System.out.println("You have entered an invalid age");
