@@ -12,8 +12,8 @@ public class Task3b{
     private void run(){
         int numberQuantity = getNumberQuantityFromUser();
         List<Integer> numbers = getNumbersFromUser(numberQuantity);
-        int average = getAverage(numbers);
-        System.out.println(String.format("The average of your numbers is: %d", average));
+        double average = getAverage(numbers);
+        System.out.println(String.format("The average of your numbers is: %f", average));
     }
 
     private int getNumberQuantityFromUser(){
@@ -35,7 +35,7 @@ public class Task3b{
     private List<Integer> getNumbersFromUser(int total){
         List<Integer> numbers = new ArrayList<>();
 
-        System.out.print(String.format("To calculate the mean average of %d numbers, ", total));
+        System.out.println(String.format("To calculate the mean average of %d numbers, ", total));
 
         while(numbers.size() < total){
             try{
@@ -52,16 +52,16 @@ public class Task3b{
         return numbers;
     }
 
-    private int getAverage(List<Integer> numbers){
+    private double getAverage(List<Integer> numbers){
 
         if(numbers.size() == 0)
             return 0;
 
-        long total = 0;
+        double total = 0;
         for(int number : numbers){
             total += number;
         }
-        return (int)(total / numbers.size());
+        return total / numbers.size();
     }
 
 }
