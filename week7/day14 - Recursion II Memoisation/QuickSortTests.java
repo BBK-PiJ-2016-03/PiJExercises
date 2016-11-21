@@ -34,14 +34,34 @@ public class QuickSortTests{
     }
 
     @Test
+    public void correctSortMedium(){
+        List<Integer> ordered = new ArrayList<>();   
+
+        for(int i = 1; i <= 1000; i++){
+            ordered.add(i);
+        }
+
+        List<Integer> reverseOrdered = new ArrayList<>();  
+
+        for(int i = 1000; i > 0; i--){
+            reverseOrdered.add(i);
+        }
+
+        List<Integer> sorted = this.sorter.sort(reverseOrdered);
+
+        assertEquals(ordered, sorted);
+    }
+
+
+    @Test
     public void correctSortLarge(){
-        List<Integer> ordered = new LinkedList<>();   
+        List<Integer> ordered = new ArrayList<>();   
 
         for(int i = 1; i <= 20000; i++){
             ordered.add(i);
         }
 
-        List<Integer> reverseOrdered = new LinkedList<>();  
+        List<Integer> reverseOrdered = new ArrayList<>();  
 
         for(int i = 20000; i > 0; i--){
             reverseOrdered.add(i);

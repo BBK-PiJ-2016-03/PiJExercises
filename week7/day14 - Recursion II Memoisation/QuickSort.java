@@ -9,8 +9,8 @@ public class QuickSort<T extends Comparable<T>>{
 
         T pivot = unsorted.get(0);
 
-        List<T> beforePivot = new LinkedList<T>();
-        List<T> afterPivot = new LinkedList<T>();
+        List<T> beforePivot = new ArrayList<T>();
+        List<T> afterPivot = new ArrayList<T>();
 
         for(int i = 1; i < unsorted.size(); i++){
             if(unsorted.get(i).compareTo(pivot) < 0){
