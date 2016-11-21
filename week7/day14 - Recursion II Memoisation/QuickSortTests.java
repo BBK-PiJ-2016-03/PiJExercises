@@ -2,9 +2,9 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.*;
 
-public class MergeSortTests{
+public class QuickSortTests{
 
-    private MergeSort<Integer> sorter = new MergeSort<>();
+    private QuickSort<Integer> sorter = new QuickSort<>();
 
     @Test
     public void correctSortReverseOrdered(){
