@@ -1,4 +1,26 @@
- public class CodeFlow
+ import java.util.*;
+ 
+ public class CodeFlow{
+
+    public static void main(String[] args){
+        CodeFlow cf = new CodeFlow();
+
+        System.out.println("input: 0");
+        cf.launch(0);
+
+        System.out.println();
+        System.out.println("input: 2");
+        cf.launch(2);
+
+        System.out.println();
+        System.out.println("input: 4");
+        cf.launch(4);
+
+        System.out.println();
+        System.out.println("input: 6");
+        cf.launch(6);
+    }
+
     public void launch(int userInput) {
         List<Integer> intList = new ArrayList<Integer>();
 
