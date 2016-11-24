@@ -1,7 +1,0 @@
-This test file has a series of numbers:
-    1.
-    2.
-    3.
-    4.
-    5.
-And that is all.
