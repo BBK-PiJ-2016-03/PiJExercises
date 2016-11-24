@@ -16,7 +16,6 @@ public class Cp{
 		File destination = new File(args[1]);	
 		
 		if(!isSourceValid(source)){
-			System.out.println("Source is not valid");
 			return;
 		}
 			
@@ -47,7 +46,8 @@ public class Cp{
 		){
 			String buffer;
 			while((buffer = in.readLine()) != null){
-				out.write(buffer+"\n");
+				out.write(buffer);
+                out.println();
 			}
 			
 			System.out.println("File copy successful");
