@@ -1,22 +1,16 @@
 public class Person {
     private String name;
-    private int age;
     private Person prevPerson;
     private Person nextPerson;
 
-    public Person(String name, int age) {
+    public Person(String name) {
         this.name = name;
-        this.age = age;
         this.prevPerson = null;
         this.nextPerson = null;
     }
 
     public String getName() {
         return this.name;
-    }
-
-    public int getAge() {
-        return this.age;
     }
 
     public Person getPrevPerson() {
