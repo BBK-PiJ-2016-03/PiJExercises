@@ -61,7 +61,6 @@ public class MatrixChecker{
         //m[i][j] == 0 for any value of i that is greater than j.
         boolean triangular = true;
         for(int row = 0; row < arr.length; row++){
-
             triangular = checkTriangularRow(arr, row);
 
             if(!triangular)

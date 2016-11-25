@@ -1,100 +1,101 @@
 public class HospitalManager{
     private Patient firstPatient;
-    private Patient lastPatient;
-    private int totalPatients;
 
     //O(1)
     public HospitalManager(){
         this.firstPatient = null;
-        this.lastPatient = null;
-        this.totalPatients = 0;
     }
 
-    //O(1)
+    //O(N)
     public void addPatient(Patient newPatient){
-
-        if(this.totalPatients == 0){
-            addFirstPatient(newPatient);
-            return;
+        if(this.firstPatient == null){
+           addFirstPatient(newPatient);
+           return;
         }
-
-        addNewPatient(newPatient);
-    }
-
-    private void addNewPatient(Patient newPatient){
-
-        Patient previous = this.lastPatient;
-
-        if(previous == null)
-            previous = this.firstPatient;
-
-        previous.setNextPatient(newPatient);
-        this.lastPatient = newPatient;
-        this.lastPatient.setPrevPatient(previous);
-        this.totalPatients++;
+        addAnotherPatient(newPatient); 
     }
 
     private void addFirstPatient(Patient newPatient){
         this.firstPatient = newPatient;
-        this.totalPatients++;
+        this.firstPatient.setNextPatient(this.firstPatient);
+    }
+
+    private void addAnotherPatient(Patient newPatient){        
+        Patient lastPatient = getLastPatient();
+        lastPatient.setNextPatient(newPatient);
+        newPatient.setNextPatient(this.firstPatient);
+    }
+
+    private Patient getLastPatient(){
+        Patient currentPatient = this.firstPatient;
+        while(currentPatient.getNextPatient() != this.firstPatient){
+            currentPatient = currentPatient.getNextPatient();
+        }
+        return currentPatient;
     }
 
     //O(N)
     public void removePatient(String name){
-        Patient currentPatient = this.firstPatient;
 
-        if(currentPatient.getName().equals(name) && this.totalPatients <= 1){
+        if(this.firstPatient == null)
+            return;
+
+        if(this.firstPatient.getNextPatient() == null){
             removeLastPatient();
             return;
         }
-        else if(currentPatient.getName().equals(name)){
-            removeFirstPatient(currentPatient);
-            return;
-        }
 
-        while(currentPatient != null){
-            if(tryToRemovePatient(name, currentPatient))
-                break;
-            currentPatient = currentPatient.getNextPatient();
-        }
-    }
+        removeAnotherPatient(name);            
 
-    private void removeFirstPatient(Patient patient){
-        this.firstPatient = this.firstPatient.getNextPatient();
-        if(this.firstPatient != null)
-            this.firstPatient.setPrevPatient(null);
-        this.totalPatients--;
+        Patient currentPatient = this.firstPatient;
+
+        if(currentPatient.getName().equals(name)){
+            this.firstPatient = currentPatient.getNextPatient();
+        }        
     }
 
     private void removeLastPatient(){
         this.firstPatient = null;
-        this.lastPatient = null;
-        this.totalPatients--;
     }
 
-    private boolean tryToRemovePatient(String name, Patient patient){
+    private void removeAnotherPatient(String name){
+        Patient prevPatient = getPreviousPatient(name);
+        if(prevPatient == null)
+            return;
 
-        if(patient == null)
+        removeNextPatient(prevPatient);
+    }
+
+    private Patient getPreviousPatient(String name){
+        Patient currentPatient = this.firstPatient;
+
+        if(currentPatient.getNextPatient().getName().equals(name))
+            return currentPatient;
+
+        while(!currentPatient.getNextPatient().equals(this.firstPatient) && !currentPatient.getNextPatient().getName().equals(name)){
+            currentPatient = currentPatient.getNextPatient();
+        }
+
+        if(currentPatient.equals(this.firstPatient))
+            return null;
+
+        return currentPatient;
+    }
+
+    private void removeNextPatient(Patient prevPatient){
+        Patient skipPatient = prevPatient.getNextPatient().getNextPatient();
+        prevPatient.setNextPatient(skipPatient);
+    }
+
+    private boolean tryToRemoveNextPatient(String name, Patient previous){
+        Patient candidateToRemove = previous.getNextPatient();
+
+        if(candidateToRemove == null)
             return false;
 
-        if(patient.getName().equals(name)){
-            Patient prev = patient.getPrevPatient();
-            Patient next = patient.getNextPatient();
-
-            if(prev != null)
-                prev.setNextPatient(next);
-
-            if(next != null)
-                next.setPrevPatient(prev);
-
-            if(patient.equals(this.firstPatient))
-                this.firstPatient = patient.getNextPatient();
-
-            if(patient.equals(this.lastPatient))
-                this.lastPatient = patient.getPrevPatient();
-
-            this.totalPatients--;
-            return true;
+        if(candidateToRemove.getName().equals(name)){
+                previous.setNextPatient(candidateToRemove.getNextPatient());
+                return true;
         }
         return false;
     }
@@ -102,28 +103,12 @@ public class HospitalManager{
     //O(N)
     public void printPatients(){
         Patient currentPatient = this.firstPatient;
-        String patientDisplay = this.totalPatients == 1 ? "Patient" : "Patients";
-        System.out.println(this.totalPatients + " " + patientDisplay);
-        if(this.totalPatients > 0){
-            printPatientsData(currentPatient);
-        }
-    }
-
-    private void printPatientsData(Patient currentPatient){
-        printSpacer();
-        while(currentPatient != null){
+        System.out.println("---------------------------------------------------");
+        do{
             System.out.println(currentPatient);
             currentPatient = currentPatient.getNextPatient();
-        }
-        printSpacer();
-        System.out.println();
-    }
-
-    private void printSpacer(){
+        }while(!currentPatient.equals(this.firstPatient));
         System.out.println("---------------------------------------------------");
-    }
-
-    public int getNumberOfPatients(){
-        return this.totalPatients;
+        System.out.println();
     }
 }
