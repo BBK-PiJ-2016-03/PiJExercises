@@ -1,11 +1,16 @@
 import java.text.NumberFormat;
-import java.util.TaskQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Task implements Runnable{
 
     private int durationInMillis;
     private int taskNumber;
-    private final List<Integer> completedTasks = new ArrayList<>();
+    private List<Integer> completedTasks = new ArrayList<>();
+
+    public Task(){
+
+    }
 
     public Task(int durationInMillis, int taskNumber, List<Integer> completedTasks) {
         this.durationInMillis = durationInMillis;
@@ -28,8 +33,8 @@ public class Task implements Runnable{
     }
 
     private int getDurationFromUser(int taskNumber){        
-        String taskString;
-        int response;
+        String taskString = null;
+        int response = 0;
         while(taskString == null){
             try{
                 System.out.print(String.format("Enter the duration (in ms) of task %d: ", taskNumber));
@@ -56,7 +61,7 @@ public class Task implements Runnable{
         int size = this.completedTasks.size();
         System.out.print("Finished tasks: ");
         for(int i = 0; i < size; i++){
-            String output = this.completedTasks.size() > 1 ? this.completedTasks.remove() +", " : this.completedTasks.remove();
+            String output = this.completedTasks.size() > 1 ? String.format("%d, ",this.completedTasks.remove(0)) : this.completedTasks.remove(0).toString();
             System.out.print(output);
         }
         System.out.println();
