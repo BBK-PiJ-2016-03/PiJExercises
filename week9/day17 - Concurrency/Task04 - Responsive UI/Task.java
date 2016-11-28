@@ -30,6 +30,18 @@ public class Task implements Runnable{
         Thread thread = new Thread(new Task(duration, taskNumber, this.completedTasks));
         thread.start();
         checkCompletedTasks();
+
+        if(taskNumber == 10){
+            synchronized(thread){
+                try{
+                    thread.wait();
+                }
+                catch(InterruptedException e){
+                    //wait less
+                }
+                checkCompletedTasks();
+            }       
+        }
     }
 
     private int getDurationFromUser(int taskNumber){        
@@ -68,12 +80,18 @@ public class Task implements Runnable{
     }
 
     @Override
-    public void run(){
+    public synchronized void run(){
         try{
             Thread.sleep(this.durationInMillis);
             synchronized(this.completedTasks){
                 this.completedTasks.add(this.taskNumber);
             }
+            
+            notify();
+            
+        }
+        catch(IllegalMonitorStateException e){
+            System.out.println("Illegal Monitor State Exception Thrown");
         }
         catch(InterruptedException e){
             System.out.println("InterruptedException caught!");
