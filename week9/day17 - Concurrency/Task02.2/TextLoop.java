@@ -12,7 +12,8 @@ public class TextLoop implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < COUNT; i++) {
-            sleep();        
+            sleep();
+            System.out.println("Slept"+i);          
         }
     }
 
