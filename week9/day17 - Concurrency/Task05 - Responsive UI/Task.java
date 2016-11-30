@@ -8,15 +8,18 @@ public class Task implements Runnable{
     private int taskNumber;
     private List<Integer> completedTasks = new ArrayList<>();
     private boolean complete = false;
+    private Task origin;
+    private int completedTaskCount = 0;
+    
 
     public Task(){
 
     }
 
-    public Task(int durationInMillis, int taskNumber, List<Integer> completedTasks) {
+    public Task(int durationInMillis, int taskNumber, Task origin) {
         this.durationInMillis = durationInMillis;
         this.taskNumber = taskNumber;
-        this.completedTasks = completedTasks;
+        this.origin = origin;
     }
 
     public static void main(String[] args) {
@@ -24,25 +27,33 @@ public class Task implements Runnable{
         for(int i = 1; i <= 10; i++){
             task.startNextTask(i);
         }
+        task.waitForAllThreadsToFinish();
+    }
+
+    public synchronized void reportTaskFinished(int id){
+        completedTasks.add(id);
+        completedTaskCount++;
     }
 
     private void startNextTask(int taskNumber){
         int duration = getDurationFromUser(taskNumber);
-        Thread thread = new Thread(new Task(duration, taskNumber, this.completedTasks));
+        Thread thread = new Thread(new Task(duration, taskNumber, this));
         thread.start();
         checkCompletedTasks();
+    }
 
-        if(taskNumber == 10){
-            synchronized(thread){
-                try{
-                    thread.wait();
-                }
-                catch(InterruptedException e){
-                    //wait less
-                }
+    private synchronized void waitForAllThreadsToFinish(){
+        while(completedTaskCount < 10){
+            try{
+                System.out.println("completedTaskCount: " + completedTaskCount);                
+                wait();
                 checkCompletedTasks();
-            }       
+            }
+            catch(InterruptedException e){
+                //wait less
+            }            
         }
+        checkCompletedTasks();
     }
 
     private int getDurationFromUser(int taskNumber){        
@@ -82,11 +93,9 @@ public class Task implements Runnable{
     public synchronized void run(){
         try{
             Thread.sleep(this.durationInMillis);
-            synchronized(this.completedTasks){
-                this.completedTasks.add(this.taskNumber);
-            }
+            this.origin.reportTaskFinished(this.taskNumber);
             
-            notify();            
+            notifyAll();            
         }
         catch(IllegalMonitorStateException e){
             System.out.println("Illegal Monitor State Exception Thrown");
