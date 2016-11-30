@@ -25,12 +25,11 @@ public class Ui{
     }
 
     private void awaitTaskFinish(){ 
-        while(completedTaskCount <= 10){
-            //System.out.println("completedTaskCount: " + completedTaskCount);
+        while(completedTaskCount < 10){
             tryWait();
             checkCompletedTasks();
         }      
-        shutdownExecutor();  
+        shutdownExecutor();
     }
 
     private synchronized void tryWait(){
@@ -40,14 +39,11 @@ public class Ui{
         try{
             wait();    
         }        
-        catch(InterruptedException e){
-            //wait less
-            //System.out.println("InterruptedException caught!");
-        }
+        catch(InterruptedException e){ /*wait less*/ }
     }
 
     private void shutdownExecutor(){
-        executor.shutdown();            
+        executor.shutdownNow();        
         try{
             executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
         } 

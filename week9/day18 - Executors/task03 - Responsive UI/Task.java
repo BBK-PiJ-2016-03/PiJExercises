@@ -34,13 +34,4 @@ public class Task implements Runnable{
         }
     }
 
-    private synchronized void tryNotifyAll(){
-        try{
-            notifyAll();
-        }
-        catch(IllegalMonitorStateException e){
-            System.out.println("Illegal Monitor State Exception Thrown");
-        }
-    }
-
 }
