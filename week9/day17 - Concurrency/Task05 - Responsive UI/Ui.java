@@ -9,8 +9,6 @@ public class Ui{
  
     private List<Task> completedTasks = new ArrayList<>();
     private int completedTaskCount = 0;
-    int numberOfProcessors = Runtime.getRuntime().availableProcessors();
-    ExecutorService executor = Executors.newFixedThreadPool(numberOfProcessors);
 
     public static void main(String[] args) {
         Ui ui = new Ui();
@@ -25,12 +23,10 @@ public class Ui{
     }
 
     private void awaitTaskFinish(){ 
-        while(completedTaskCount <= 10){
-            //System.out.println("completedTaskCount: " + completedTaskCount);
+        while(completedTaskCount < 10){
             tryWait();
             checkCompletedTasks();
         }      
-        shutdownExecutor();  
     }
 
     private synchronized void tryWait(){
@@ -42,26 +38,20 @@ public class Ui{
         }        
         catch(InterruptedException e){
             //wait less
-            //System.out.println("InterruptedException caught!");
         }
     }
 
-    private void shutdownExecutor(){
-        executor.shutdown();            
-        try{
-            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-        } 
-        catch (InterruptedException e) { /*wait less */ }
-
-        executor = null;
-    }
-
     private void startNextTask(int taskNumber){
-        int duration = getDurationFromUser(taskNumber);
-        Task task = new Task(duration, taskNumber, this);
-        executor.submit(task);
+        Thread t = getThreadForTask(taskNumber);
+        t.start();
         checkCompletedTasks();
     }    
+
+    private Thread getThreadForTask(int taskNumber){
+        int duration = getDurationFromUser(taskNumber);
+        Runnable task = new Task(duration, taskNumber, this);
+        return new Thread(task);
+    }
     
     public synchronized void reportTaskFinished(Task task){
         completedTasks.add(task);
