@@ -52,4 +52,10 @@ public class ExecutorImpl implements Executor{
             //wait less
         }
     }
+
+    public int getMaxPendingTime(){
+        int maxTimeToClearCurrentlyRunning = 1000;
+        int maxTimeToCycleOutstanding = (pendingTasks.size() * 1000 / concurrentTasksLimit);
+        return maxTimeToClearCurrentlyRunning + maxTimeToCycleOutstanding;
+    }
 }
