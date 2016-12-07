@@ -1,6 +1,6 @@
 import java.util.Arrays;
-public class ArraySort {
-    
+public class ArraySort2 {
+
     public static void main(String[] args){
         String[] strings = {"Hello", "Badger", "Dolphin", "Dragon", "Fish", "Elephant", "Eagle"};
         printArray(strings, "Original");
