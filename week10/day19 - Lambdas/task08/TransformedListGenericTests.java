@@ -14,11 +14,12 @@ public class TransformedListGenericTests {
     private List<String> addPlingCompare = Arrays.asList("one!", "two!", "five!");
     private List<String> IToEyeCompare = Arrays.asList("one", "two", "feyeve");
     private List<String> upperCompare = Arrays.asList("ONE", "TWO", "FIVE");
+    private List<Integer> doubleCompare = Arrays.asList(2, 4, 10);
 
     @Test
     public void testAddPling(){
         List<String> words = getList();
-        List<String> addPling = Task7Utils.transformedList(words,  s -> s + "!");
+        List<String> addPling = Task8Utils.transformedList(words,  s -> s + "!");
         assertEquals(addPling.toString(), this.addPlingCompare.toString());
     }
 
@@ -33,14 +34,29 @@ public class TransformedListGenericTests {
     @Test
     public void testIToEye(){
         List<String> words = getList();
-        List<String> iToEyeCompare = Task7Utils.transformedList(words,  s -> s.replace("i", "eye"));
+        List<String> iToEyeCompare = Task8Utils.transformedList(words,  s -> s.replace("i", "eye"));
         assertEquals(iToEyeCompare.toString(), this.IToEyeCompare.toString());
     }
 
     @Test
     public void testUpper(){
         List<String> words = getList();
-        List<String> upper = Task7Utils.transformedList(words,  String::toUpperCase);
+        List<String> upper = Task8Utils.transformedList(words,  String::toUpperCase);
         assertEquals(upper.toString(), this.upperCompare.toString());
+    }
+
+    @Test
+    public void testDouble(){
+        List<Integer> ints = getNumberList();
+        List<Integer> doubles = Task8Utils.transformedList(ints,  s -> s * 2);
+        assertEquals(doubles.toString(), this.doubleCompare.toString());
+    }
+
+    private List<Integer> getNumberList() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(5);
+        return list;
     }
 }
