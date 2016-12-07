@@ -1,0 +1,41 @@
+• userInput is 0.
+01->02->03->04->05->06->07->08->09->10->11->12->...21->24->25->26->27
+OUTPUT: 2 3 4 5 6
+• userInput is 2.
+01->02->03->04->05->06->07->08->09->10->...15->24->25->26->27
+OUTPUT: 3 4 5 ||| 4 5 6
+• userInput is 4.
+01->02->03->04->05->06->07->08->09->10->...13->24->25->26->27
+OUTPUT: 5 6 ||| 6
+• userInput is 6.
+01->02->03->04->05->06->07->08->09->10->...->24->25->26->27
+OUTPUT: 
+
+
+01 public void launch(int userInput) {
+02 List<Integer> intList = new ArrayList<Integer>();
+03 intList.add(1);
+04 intList.add(2);
+05 intList.add(3);
+06 intList.add(4);
+07 intList.add(5);
+08 intList.add(6);
+09 try {
+10  intList.remove(0);
+11  System.out.println(intList.get(userInput));
+12  intList.remove(0);
+13  System.out.println(intList.get(userInput));
+14  intList.remove(0);
+15  System.out.println(intList.get(userInput));
+16  intList.remove(0);
+17  System.out.println(intList.get(userInput));
+18  intList.remove(0);
+19  System.out.println(intList.get(userInput));
+20  intList.remove(0);
+21  System.out.println(intList.get(userInput));
+22  intList.remove(0);
+23  System.out.println(intList.get(userInput));
+24 } catch (IndexOutOfBoundsException ex) {
+25  ex.printStackTrace();
+26 }
+27 }

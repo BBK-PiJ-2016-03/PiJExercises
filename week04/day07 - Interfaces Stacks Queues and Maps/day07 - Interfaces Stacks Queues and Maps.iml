@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Task01 - Supermarket Queue" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task02# -  Supermarket queue revisited" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task03# - Foreign People Different Queues" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task04.1# - Simple Unfair Queue" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task05.1 - Hash Function" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/task05.2 - Simple Map" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
