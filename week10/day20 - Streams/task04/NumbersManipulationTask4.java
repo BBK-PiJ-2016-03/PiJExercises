@@ -17,23 +17,9 @@ public class NumbersManipulationTask4 {
     }
 
     private void run() {
-        System.out.println("Squares....");
-        System.out.println("Source: "+source1);
-        System.out.println("Result: "+squares(source1));
-
-        System.out.println();
-
         System.out.println("Pairs....");
         System.out.println("Source: "+source2+" "+source3);
         System.out.println("Result: "+pairs(source2, source3));
-    }
-
-    private List<Integer> squares(List<Integer> source) {
-//        (a) Given a list of numbers, how would you return a list of the square of each number? For
-//        example, given [1, 2, 3, 4, 5] you should return [1, 4, 9, 16, 25].
-        return source.stream()
-                .map(x -> x*x)
-                .collect(Collectors.toList());
     }
 
     private List<String> pairs(List<Integer> source1, List<Integer> source2){
