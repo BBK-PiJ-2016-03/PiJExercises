@@ -10,12 +10,12 @@ public class Task10 {
     private static final List<Double> doubles = Arrays.asList(5.0, 20.0, 32.0, 43.0);
 
     public static void main(String[] args) {
-        System.out.println(sum1(numbers));
-        System.out.println(sum2(numbers));
-        System.out.println(sum3(numbers));
-        System.out.println(parallelSum(numbers));
-        System.out.println(doublesProductSerial(doubles));
-        System.out.println(doublesProductParallel(doubles));
+        System.out.println("Sum1: "+sum1(numbers));
+        System.out.println("Sum2: "+sum2(numbers));
+        System.out.println("Sum3: "+sum3(numbers));
+        System.out.println("parallelSum: "+parallelSum(numbers));
+        System.out.println("doublesProductSerial: "+doublesProductSerial(doubles));
+        System.out.println("doublesProductParallel: "+doublesProductParallel(doubles));
     }
 
 //    (a) (*) Provide three ways to use streams to compute the sum of a list of numbers
@@ -48,7 +48,9 @@ public class Task10 {
 //    that you get the same answer as for the sequential code.
 
     public static int parallelSum(List<Integer> input){
-        return 0;
+        return input.parallelStream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
 //    (c) (**) Now, use streams to compute the product of some doubles. Show that serial and
