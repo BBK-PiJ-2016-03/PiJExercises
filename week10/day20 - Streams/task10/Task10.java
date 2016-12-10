@@ -20,15 +20,28 @@ public class Task10 {
 
 //    (a) (*) Provide three ways to use streams to compute the sum of a list of numbers
     public static int sum1(List<Integer> input){
-        return 0;
+        return input.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public static int sum2(List<Integer> input){
-        return 0;
+        return input.stream()
+                .reduce((num1, num2) -> num1+num2)
+                .get();
     }
 
     public static int sum3(List<Integer> input){
-        return 0;
+        double average = input.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                .getAsDouble();
+
+        long count = input.stream()
+                .mapToInt(Integer::intValue)
+                .count();
+
+        return (int)(average * count);
     }
 
 //    (b) (*) Rewrite one of the solutions for (10a) so that it can be executed in parallel; verify
