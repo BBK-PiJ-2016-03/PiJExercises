@@ -7,11 +7,17 @@ import java.util.stream.Collectors;
  */
 public class Task09 {
 
+    public static void main(String[] args) {
+        System.out.println(randomNumberList(5));
+        System.out.println(randomNumberList(5));
+        System.out.println(randomNumberList(5));
+    }
+
 //    (a) Write a static method that produces a List of a specified length of random numbers.
 //    E.g.: List<Double> nums = randomNumberList(someSize);
 //    // Result is something like [0.7096867136897776, 0.09894202723079482, ...]
-    public static List<Integer> randomNumberList(long size){
-        return new Random().ints(size)
+    public static List<Double> randomNumberList(long size){
+        return new Random().doubles(size)
                 .boxed()
                 .collect(Collectors.toList());
     }
