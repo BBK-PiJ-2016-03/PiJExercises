@@ -7,14 +7,23 @@ import java.util.List;
 public class Task10 {
 
     private static final List<Integer> numbers = Arrays.asList(5, 20, 32, 43);
-    private static final List<Double> doubles = Arrays.asList(5.0, 20.0, 32.0, 43.0);
+    private static final List<Double> doubles = Arrays.asList(5.36435, 20.580336742, 32.88888888877, 43.2332456787655241453,
+            5.36435, 20.580336742, 32.88888888877, 43.2332456787655241453,
+            5.36435, 20.580336742, 32.88888888877, 43.2332456787655241453,
+            5.36435, 20.580336742, 32.88888888877, 43.2332456787655241453,
+            5.36435, 20.580336742, 32.88888888877, 43.2332456787655241453,
+            5.36435, 20.580336742, 32.88888888877, 43.2332456787655241453,
+            5.36435, 20.580336742, 32.88888888877, 43.2332456787655241453);
 
     public static void main(String[] args) {
         System.out.println("Sum1: "+sum1(numbers));
         System.out.println("Sum2: "+sum2(numbers));
         System.out.println("Sum3: "+sum3(numbers));
         System.out.println("parallelSum: "+parallelSum(numbers));
-        System.out.println("doublesProductSerial: "+doublesProductSerial(doubles));
+
+        System.out.println(doubles.size());
+
+        System.out.println("doublesProductSerial  : "+doublesProductSerial(doubles));
         System.out.println("doublesProductParallel: "+doublesProductParallel(doubles));
     }
 
@@ -58,11 +67,16 @@ public class Task10 {
 //            (Note: this is a bit tricky, because it seems at first that multiplication is associative, as
 //    required by the parallel reduce. It will be impossible to illustrate the result if you have
 //    a single-core computer.)
-    public static int doublesProductSerial(List<Double> input){
-        return 0;
+    public static double doublesProductSerial(List<Double> input){
+        return input.stream()
+                .reduce((d1, d2) -> d1*d2)
+                .get();
     }
 
-    public static int doublesProductParallel(List<Double> input){
-        return 0;
+    public static double doublesProductParallel(List<Double> input){
+        return input.parallelStream()
+                .mapToDouble(Double::doubleValue)
+                .reduce((d1, d2) -> d1*d2)
+                .getAsDouble();
     }
 }
