@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by Alexander Worton on 10/12/2016.
@@ -11,6 +12,10 @@ public class Task09 {
         System.out.println(randomNumberList(5));
         System.out.println(randomNumberList(5));
         System.out.println(randomNumberList(5));
+
+        System.out.println(orderedNumberList(50, 5, 5));
+        System.out.println(orderedNumberList(100, 1, 5));
+        System.out.println(orderedNumberList(0, 25, 5));
     }
 
 //    (a) Write a static method that produces a List of a specified length of random numbers.
@@ -26,7 +31,10 @@ public class Task09 {
 //    E.g.: List<Integer> nums = orderedNumberList(50, 5, someSize);
 //    // Result is [50, 55, 60, ...]
     public static List<Integer> orderedNumberList(int start, int step, int size){
-        return null;
+        return IntStream.iterate(start, e -> e + step)
+                .limit(size)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
 }
