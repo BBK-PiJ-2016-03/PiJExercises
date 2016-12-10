@@ -21,8 +21,6 @@ public class Task10 {
         System.out.println("Sum3: "+sum3(numbers));
         System.out.println("parallelSum: "+parallelSum(numbers));
 
-        System.out.println(doubles.size());
-
         System.out.println("doublesProductSerial  : "+doublesProductSerial(doubles));
         System.out.println("doublesProductParallel: "+doublesProductParallel(doubles));
     }
