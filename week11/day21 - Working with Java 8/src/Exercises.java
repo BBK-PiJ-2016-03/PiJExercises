@@ -18,6 +18,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -145,9 +146,12 @@ public class Exercises {
 
 
     @Test
-    @Ignore
     public void listOfAllWords() throws IOException {
         List<String> output = null; /* TODO */
+        output = reader.lines()
+                .flatMap(line -> Stream.of(line.split(REGEXP)))
+                .filter(word -> word.length() > 0)
+                .collect(Collectors.toList());
 
         assertEquals(
                 Arrays.asList(
