@@ -79,9 +79,11 @@ public class Exercises {
     // and put them into an output list.
 
     @Test
-    @Ignore
     public void findEvenLengthWords() {
         List<String> output = null; /* TODO */
+        output = wordList.stream()
+                .filter(w -> w.length() % 2 == 0)
+                .collect(Collectors.toList());
 
         assertEquals(
                 Arrays.asList(
