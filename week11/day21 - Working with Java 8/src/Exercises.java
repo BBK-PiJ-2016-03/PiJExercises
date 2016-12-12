@@ -110,9 +110,13 @@ public class Exercises {
     // Exercise 5: Join lines 3-4 from the text file into a single string.
 
     @Test
-    @Ignore
     public void joinLineRange() throws IOException {
         String output = null; /* TODO */
+        output = reader.lines()
+                .skip(2)
+                .limit(2)
+                .reduce(String::concat)
+                .get();
 
         assertEquals(
                 "But as the riper should by time decease," +
