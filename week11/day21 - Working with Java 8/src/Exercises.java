@@ -176,9 +176,14 @@ public class Exercises {
     // Exercise 8: Create a list containing the words, lowercased, in alphabetical order.
 
     @Test
-    @Ignore
     public void sortedLowerCase() throws IOException {
         List<String> output = null; /* TODO */
+        output = reader.lines()
+                .flatMap(line -> Stream.of(line.split(REGEXP)))
+                .filter(word -> word.length() > 0)
+                .map(String::toLowerCase)
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.toList());
 
         assertEquals(
                 Arrays.asList(
