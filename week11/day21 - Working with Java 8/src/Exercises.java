@@ -5,7 +5,6 @@
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -13,7 +12,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -297,9 +299,14 @@ public class Exercises {
 // with a value of [bazz] (a one-element list of String).
 
     @Test
-    @Ignore
     public void nestedGrouping() throws IOException {
         Map<String, Map<Integer, List<String>>> map = null; /* TODO */
+
+        map = reader.lines()
+                .flatMap(line -> Stream.of(line.split(REGEXP)))
+                .filter(word -> word.length() > 0)
+                .collect(Collectors.groupingBy((String w) -> w.substring(0,1),
+                                                Collectors.groupingBy(word -> word.length(), Collectors.toList())));
 
         assertEquals("[From, Feed]", map.get("F").get(4).toString());
         assertEquals("[by, be, by]", map.get("b").get(2).toString());
