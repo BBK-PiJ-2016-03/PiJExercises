@@ -268,9 +268,14 @@ public class Exercises {
     // lower case.
 
     @Test
-    @Ignore
     public void wordFrequencies() throws IOException {
         Map<String, Long> map = null; /* TODO */
+
+        map = reader.lines()
+                .flatMap(line -> Stream.of(line.split(REGEXP)))
+                .filter(word -> word.length() > 0)
+                .collect(Collectors.groupingBy(w -> w, Collectors.counting()));
+
 
         assertEquals(2L, (long) map.get("tender"));
         assertEquals(6L, (long) map.get("the"));
