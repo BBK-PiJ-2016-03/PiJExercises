@@ -13,10 +13,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -251,9 +248,13 @@ public class Exercises {
 
 
     @Test
-    @Ignore
     public void mapLengthToWordList() throws IOException {
         Map<Integer, List<String>> map = null; /* TODO */
+
+        map = reader.lines()
+                .flatMap(line -> Stream.of(line.split(REGEXP)))
+                .filter(word -> word.length() > 0)
+                .collect(Collectors.groupingBy(word -> word.length(), Collectors.toList()));
 
         assertEquals(6, map.get(7).size());
         assertEquals(Arrays.asList("increase", "ornament"), map.get(8));
