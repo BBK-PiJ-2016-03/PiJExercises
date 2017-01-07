@@ -1,4 +1,4 @@
-package Task02;
+package Task04_Circular_list;
 
 public class Patient{
     private String name = "";

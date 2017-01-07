@@ -1,4 +1,4 @@
-package Task03;
+package Task03_Doubly_linked_lists;
 
 public class HospitalManager{
     private Patient firstPatient;

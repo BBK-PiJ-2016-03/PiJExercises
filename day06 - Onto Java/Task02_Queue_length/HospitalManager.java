@@ -1,4 +1,4 @@
-package Task02;
+package Task02_Queue_length;
 
 public class HospitalManager{
     private Patient firstPatient;

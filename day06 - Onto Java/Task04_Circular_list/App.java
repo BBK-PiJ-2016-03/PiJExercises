@@ -1,4 +1,4 @@
-package Task02;
+package Task04_Circular_list;
 
 public class App{
     public static void main(String[] args){

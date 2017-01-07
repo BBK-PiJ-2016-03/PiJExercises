@@ -1,4 +1,4 @@
-package Task01;
+package Task02_Queue_length;
 
 public class App{
     public static void main(String[] args){

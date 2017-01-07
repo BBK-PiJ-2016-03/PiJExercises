@@ -1,4 +1,4 @@
-package Task01;
+package Task01_Singly_linked_lists;
 
 public class Patient{
     private String name = "";

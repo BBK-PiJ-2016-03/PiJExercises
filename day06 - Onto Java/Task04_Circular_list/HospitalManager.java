@@ -1,4 +1,4 @@
-package Task04;
+package Task04_Circular_list;
 
 public class HospitalManager{
     private Patient firstPatient;
