@@ -1,6 +1,4 @@
-package Task07;
-
-import Task07.IntegerLinkedList;
+package Task07_Array_to_List;
 
 public class ArrayUtilities{
 
