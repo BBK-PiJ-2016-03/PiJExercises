@@ -1,3 +1,7 @@
+package task01_echo;
+
+import task01_echo.EchoService;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 

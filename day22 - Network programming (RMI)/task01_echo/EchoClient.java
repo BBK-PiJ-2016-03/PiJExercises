@@ -1,3 +1,7 @@
+package task01_echo;
+
+import task01_echo.EchoService;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -20,10 +24,10 @@ public class EchoClient {
 
     private void run(){
         System.out.println("Echo service");
-        connectService("127.0.0.1", "7");
+        connectService("127.0.0.1", "1099");
         String input;
 
-        while((input = getInput()).toLowerCase() != "q"){
+        while(!(input = getInput()).equalsIgnoreCase("q")){
             if(echoService == null)
                 break;
             executeInput(input);
@@ -42,7 +46,7 @@ public class EchoClient {
 
     private String getInput(){
         System.out.print("> ");
-        return sc.next();
+        return sc.nextLine();
     }
 
     private void connectService(String registryAddress, String port){

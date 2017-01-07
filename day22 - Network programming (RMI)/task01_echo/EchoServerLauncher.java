@@ -1,3 +1,5 @@
+package task01_echo;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -10,9 +12,9 @@ public class EchoServerLauncher {
     public static void main(String[] args) {
         try{
             System.setProperty("java.rmi.server.hostname","127.0.0.1");
-            LocateRegistry.createRegistry(7);
+            LocateRegistry.createRegistry(1099);
             EchoServer server = new EchoServer();
-            String registryAddress = "localhost";
+            String registryAddress = "127.0.0.1";
             String registryUrl = "//" + registryAddress + "/";
             String serviceName = "echo";
             Naming.rebind(registryUrl + serviceName, server);
