@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/day01 - Here it all begins/day01 - Here it all begins.iml" filepath="$PROJECT_DIR$/day01 - Here it all begins/day01 - Here it all begins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day02 - Version Control/day02 - Version Control.iml" filepath="$PROJECT_DIR$/day02 - Version Control/day02 - Version Control.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day03 - Simple and Complex Types/day03 - Simple and Complex Types.iml" filepath="$PROJECT_DIR$/day03 - Simple and Complex Types/day03 - Simple and Complex Types.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day04 - Methods/day04 - Methods.iml" filepath="$PROJECT_DIR$/day04 - Methods/day04 - Methods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day05 - Java transition and Arrays/day05 - Java transition and Arrays.iml" filepath="$PROJECT_DIR$/day05 - Java transition and Arrays/day05 - Java transition and Arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day06 - Onto Java/day06 - Onto Java.iml" filepath="$PROJECT_DIR$/day06 - Onto Java/day06 - Onto Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day07 - Interfaces Stacks Queues and Maps/day07 - Interfaces Stacks Queues and Maps.iml" filepath="$PROJECT_DIR$/day07 - Interfaces Stacks Queues and Maps/day07 - Interfaces Stacks Queues and Maps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day08 - Inheritance/day08 - Inheritance.iml" filepath="$PROJECT_DIR$/day08 - Inheritance/day08 - Inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day09 - Polymorphism/day09 - Polymorphism.iml" filepath="$PROJECT_DIR$/day09 - Polymorphism/day09 - Polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day10 - Recursion/day10 - Recursion.iml" filepath="$PROJECT_DIR$/day10 - Recursion/day10 - Recursion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day11 - Trees/day11 - Trees.iml" filepath="$PROJECT_DIR$/day11 - Trees/day11 - Trees.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day12 - Automated Testing/day12 - Automated Testing.iml" filepath="$PROJECT_DIR$/day12 - Automated Testing/day12 - Automated Testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day13 - TDD/day13 - TDD.iml" filepath="$PROJECT_DIR$/day13 - TDD/day13 - TDD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day14 - Recursion II Memoisation/day14 - Recursion II Memoisation.iml" filepath="$PROJECT_DIR$/day14 - Recursion II Memoisation/day14 - Recursion II Memoisation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day15 - Exceptions/day15 - Exceptions.iml" filepath="$PROJECT_DIR$/day15 - Exceptions/day15 - Exceptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day16 - FileIO/day16 - FileIO.iml" filepath="$PROJECT_DIR$/day16 - FileIO/day16 - FileIO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day17 - Concurrency/day17 - Concurrency.iml" filepath="$PROJECT_DIR$/day17 - Concurrency/day17 - Concurrency.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day18 - Executors/day18 - Executors.iml" filepath="$PROJECT_DIR$/day18 - Executors/day18 - Executors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day19 - Lambdas/day19 - Lambdas.iml" filepath="$PROJECT_DIR$/day19 - Lambdas/day19 - Lambdas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20 - Streams/day20 - Streams.iml" filepath="$PROJECT_DIR$/day20 - Streams/day20 - Streams.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day21 - Working with Java 8/day21 - Working with Java 8.iml" filepath="$PROJECT_DIR$/day21 - Working with Java 8/day21 - Working with Java 8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day22 - Network programming (RMI)/day22 - Network programming (RMI).iml" filepath="$PROJECT_DIR$/day22 - Network programming (RMI)/day22 - Network programming (RMI).iml" />
+    </modules>
+  </component>
+</project>
