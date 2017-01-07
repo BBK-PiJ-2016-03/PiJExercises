@@ -1,3 +1,5 @@
+package Task04;
+
 public class Patient{
     private String name = "";
     private int age = 0;

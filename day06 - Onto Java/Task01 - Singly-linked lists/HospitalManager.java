@@ -1,3 +1,5 @@
+package Task01;
+
 public class HospitalManager{
     private Patient firstPatient;
 

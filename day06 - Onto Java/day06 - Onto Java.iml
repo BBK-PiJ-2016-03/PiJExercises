@@ -4,6 +4,11 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task01 - Singly-linked lists" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task02 - Queue length" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task03 - Doubly-linked lists" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task04 - Circular list" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Task07 - Array to List" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
