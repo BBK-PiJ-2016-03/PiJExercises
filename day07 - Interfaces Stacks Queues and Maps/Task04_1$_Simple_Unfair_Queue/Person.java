@@ -1,3 +1,5 @@
+package Task04_1$_Simple_Unfair_Queue;
+
 public class Person {
     private String name;
     private int age;

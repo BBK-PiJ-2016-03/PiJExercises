@@ -1,3 +1,5 @@
+package Task05_1_Hash_Function;
+
 public class App{
     public static void main(String[] args){
 
@@ -9,7 +11,7 @@ public class App{
             if(input.equals("q"))
                 run = false;
             int hash = input.hashCode();
-            int smallHash = HashUtilities.shortHash(hash);
+            int smallHash = task05_2_Simple_Map.HashUtilities.shortHash(hash);
             System.out.println("0 < " + smallHash + " < 1000");
         }
 

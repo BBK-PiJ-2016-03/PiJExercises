@@ -1,3 +1,5 @@
+package Task03$_Foreign_People_Different_Queues;
+
 public class Person {
     private String name;
     private Person prevPerson;

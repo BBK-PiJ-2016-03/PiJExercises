@@ -1,3 +1,5 @@
+package task05_2_Simple_Map;
+
 public class App{
     public static void main(String[] args){
 

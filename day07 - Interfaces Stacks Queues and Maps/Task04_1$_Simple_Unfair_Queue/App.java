@@ -1,3 +1,5 @@
+package Task04_1$_Simple_Unfair_Queue;
+
 public class App{
     public static void main(String[] args){
 

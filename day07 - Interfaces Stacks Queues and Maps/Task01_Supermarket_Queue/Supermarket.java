@@ -1,13 +1,15 @@
+package Task01_Supermarket_Queue;
+
 public class Supermarket{
 
-    private PersonQueue queue;
+    private SupermarketQueue queue;
 
     public static void main(String[] args){
         Supermarket sm = new Supermarket();
     }
 
     public Supermarket(){
-        this.queue = new PersonQueueImpl();
+        this.queue = new SupermarketQueue();
 
         addPerson(new Person("Bill"));
 

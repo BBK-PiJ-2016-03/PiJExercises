@@ -1,3 +1,5 @@
+package task05_2_Simple_Map;
+
 public class IntegerToStringMap implements SimpleMap{
 
     private int countOfElements = 0;

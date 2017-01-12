@@ -1,3 +1,5 @@
+package Task04_1$_Simple_Unfair_Queue;
+
 public class UnfairPersonQueue implements PersonQueue{
 
     private Person firstPerson = null;

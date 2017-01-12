@@ -1,7 +1,8 @@
+package Task02$_Supermarket_queue_revisited;
+
 public class SupermarketQueue implements PersonQueue {
 
     private Person firstPerson = null;
-    private Person lastPerson = null;
     private int length = 0;
 
     public SupermarketQueue(){
@@ -15,45 +16,40 @@ public class SupermarketQueue implements PersonQueue {
     public void insert(Person person) {
         if(firstPerson == null){
             firstPerson = person;
-            lastPerson = person;
             this.length++;
             return;
         }
 
         person.setNextPerson(firstPerson);
-        firstPerson.setPrevPerson(person);
         firstPerson = person;
          this.length++;
     }
 
     public Person retrieve() {
-
-        Person removedPerson = lastPerson;
-
-        if(lastPerson == null)
+        if (firstPerson == null){
             return null;
-
-        if(lastPerson == firstPerson){
-            lastPerson.setNextPerson(null);
-            lastPerson.setPrevPerson(null);
-            firstPerson = null;
-            lastPerson = null;
-            this.length--;
-            return removedPerson;
         }
 
-        lastPerson = lastPerson.getPrevPerson();
-        lastPerson.setNextPerson(null);
+        if (firstPerson.getNextPerson() == null) {
+            Person lastPerson = firstPerson;
+            firstPerson = null;
+            lastPerson.setNextPerson(null);
+            this.length--;
+            return lastPerson;
+        }
 
-        removedPerson.setPrevPerson(null);
-        removedPerson.setNextPerson(null);
+        Person currentPerson = firstPerson;
+        while (currentPerson.getNextPerson() != null) {
+            if (currentPerson.getNextPerson().getNextPerson() == null)
+                break;
+            currentPerson = currentPerson.getNextPerson();
+        }
 
+        Person lastPerson = currentPerson.getNextPerson();
+        currentPerson.setNextPerson(null);
         this.length--;
-        return removedPerson;
-    }
-
-    public Person peek(){
         return lastPerson;
+
     }
 
     public int length(){

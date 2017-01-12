@@ -1,6 +1,9 @@
+package Task01_Supermarket_Queue;
+
 public class SupermarketQueue implements PersonQueue {
 
     private Person firstPerson = null;
+    private Person lastPerson = null;
     private int length = 0;
 
     public SupermarketQueue(){
@@ -11,43 +14,49 @@ public class SupermarketQueue implements PersonQueue {
         insert(person);
     }
 
+    @Override
     public void insert(Person person) {
         if(firstPerson == null){
             firstPerson = person;
+            lastPerson = person;
             this.length++;
             return;
         }
 
         person.setNextPerson(firstPerson);
+        firstPerson.setPrevPerson(person);
         firstPerson = person;
          this.length++;
     }
 
     public Person retrieve() {
-        if (firstPerson == null){
+
+        Person removedPerson = lastPerson;
+
+        if(lastPerson == null)
             return null;
-        }
 
-        if (firstPerson.getNextPerson() == null) {
-            Person lastPerson = firstPerson;
-            firstPerson = null;
+        if(lastPerson == firstPerson){
             lastPerson.setNextPerson(null);
+            lastPerson.setPrevPerson(null);
+            firstPerson = null;
+            lastPerson = null;
             this.length--;
-            return lastPerson;
+            return removedPerson;
         }
 
-        Person currentPerson = firstPerson;
-        while (currentPerson.getNextPerson() != null) {
-            if (currentPerson.getNextPerson().getNextPerson() == null)
-                break;
-            currentPerson = currentPerson.getNextPerson();
-        }
+        lastPerson = lastPerson.getPrevPerson();
+        lastPerson.setNextPerson(null);
 
-        Person lastPerson = currentPerson.getNextPerson();
-        currentPerson.setNextPerson(null);
+        removedPerson.setPrevPerson(null);
+        removedPerson.setNextPerson(null);
+
         this.length--;
-        return lastPerson;
+        return removedPerson;
+    }
 
+    public Person peek(){
+        return lastPerson;
     }
 
     public int length(){

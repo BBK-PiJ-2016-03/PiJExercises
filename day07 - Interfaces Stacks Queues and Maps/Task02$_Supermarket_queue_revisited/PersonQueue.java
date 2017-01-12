@@ -1,3 +1,5 @@
+package Task02$_Supermarket_queue_revisited;
+
 public interface PersonQueue {
 /**
 * Adds another person to the queue.

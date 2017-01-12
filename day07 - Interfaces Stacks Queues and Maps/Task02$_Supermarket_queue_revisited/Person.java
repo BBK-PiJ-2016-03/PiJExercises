@@ -1,3 +1,5 @@
+package Task02$_Supermarket_queue_revisited;
+
 public class Person {
     private String name;
     private Person prevPerson;

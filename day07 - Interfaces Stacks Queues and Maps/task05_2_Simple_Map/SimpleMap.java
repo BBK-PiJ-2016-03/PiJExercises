@@ -1,3 +1,5 @@
+package task05_2_Simple_Map;
+
 /**
 * Map from integer to Strings
 */
